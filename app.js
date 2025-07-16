@@ -70,7 +70,9 @@ function renderProducts(products) {
           <i class="bi ${isInWishlist(product.id) ? 'bi-heart-fill' : 'bi-heart'}"></i>
         </button>
         <div class="ratio ratio-4x3 product-image-container">
-          <img src="${product.image}" class="card-img-top object-fit-cover" alt="${product.name}">
+          <img src="${product.image}" class="card-img-top object-fit-cover" alt="${product.name}" 
+               onerror="this.style.background='linear-gradient(135deg, #667eea 0%, #764ba2 100%)'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.color='rgba(255,255,255,0.9)'; this.style.fontSize='1.5rem'; this.style.fontWeight='600'; this.style.borderRadius='8px'; this.style.boxShadow='0 2px 8px rgba(102,126,234,0.15)'; this.innerHTML='📦'; if(window.innerWidth <= 600) { this.style.fontSize='0.8rem'; this.style.borderRadius='4px'; } if(window.innerWidth <= 414) { this.style.fontSize='0.7rem'; this.style.borderRadius='3px'; } if(window.innerWidth <= 375) { this.style.fontSize='0.6rem'; this.style.borderRadius='2px'; }"
+               style="image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges; filter: brightness(1.02) contrast(1.05) saturate(1.08);">
         </div>
         <div class="card-body">
           <h5 class="card-title">${product.name}</h5>
@@ -95,6 +97,7 @@ function renderProducts(products) {
   initializeWishlistButtons();
   initializeProductCardClicks();
   observeProductCards();
+  optimizeImages(); // Bilder nach dem Rendern optimieren
 }
 
 function observeProductCards() {
@@ -452,6 +455,9 @@ document.addEventListener('DOMContentLoaded', () => {
       priceSort ? priceSort.value : 'Aufsteigend'
     );
     renderProducts(sorted);
+    
+    // Bilder optimieren
+    optimizeImages();
   });
 
   const clearCartBtn = document.getElementById('clearCart');
@@ -462,6 +468,58 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+// Bilder optimieren
+function optimizeImages() {
+  const images = document.querySelectorAll('img');
+  images.forEach(img => {
+    // Fallback für fehlende Bilder mit verbessertem Design
+    img.addEventListener('error', function() {
+      this.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+      this.style.display = 'flex';
+      this.style.alignItems = 'center';
+      this.style.justifyContent = 'center';
+      this.style.color = 'rgba(255,255,255,0.9)';
+      this.style.fontSize = '1.5rem';
+      this.style.fontWeight = '600';
+      this.style.borderRadius = '8px';
+      this.style.boxShadow = '0 2px 8px rgba(102,126,234,0.15)';
+      this.innerHTML = '📦';
+      
+      // Mobile Anpassungen für Platzhalter
+      if (window.innerWidth <= 600) {
+        this.style.fontSize = '0.8rem';
+        this.style.borderRadius = '4px';
+      }
+      if (window.innerWidth <= 414) {
+        this.style.fontSize = '0.7rem';
+        this.style.borderRadius = '3px';
+      }
+      if (window.innerWidth <= 375) {
+        this.style.fontSize = '0.6rem';
+        this.style.borderRadius = '2px';
+      }
+    });
+    
+    // Lade-Animation mit verbesserter Performance
+    img.addEventListener('load', function() {
+      this.style.opacity = '1';
+      this.style.transform = 'scale(1)';
+      this.style.filter = 'brightness(1.02) contrast(1.05) saturate(1.08)';
+    });
+    
+    // Initiale Lade-Animation
+    img.style.opacity = '0.8';
+    img.style.transform = 'scale(0.98)';
+    img.style.transition = 'opacity 0.3s ease, transform 0.3s ease, filter 0.3s ease';
+    
+    // Bildqualität für mobile Geräte optimieren
+    if (window.innerWidth <= 600) {
+      img.style.imageRendering = '-webkit-optimize-contrast';
+      img.style.imageRendering = 'crisp-edges';
+    }
+  });
+}
 
 // Stelle sicher, dass changeQuantity, removeFromCart und clearCart global verfügbar sind:
 window.changeQuantity = changeQuantity;
