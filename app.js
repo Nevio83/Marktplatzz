@@ -71,8 +71,7 @@ function renderProducts(products) {
         </button>
         <div class="ratio ratio-4x3 product-image-container">
           <img src="${product.image}" class="card-img-top object-fit-cover" alt="${product.name}" 
-               onerror="this.style.background='linear-gradient(135deg, #667eea 0%, #764ba2 100%)'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.color='rgba(255,255,255,0.9)'; this.style.fontSize='1.5rem'; this.style.fontWeight='600'; this.style.borderRadius='8px'; this.style.boxShadow='0 2px 8px rgba(102,126,234,0.15)'; this.innerHTML='📦'; if(window.innerWidth <= 600) { this.style.fontSize='0.8rem'; this.style.borderRadius='4px'; } if(window.innerWidth <= 414) { this.style.fontSize='0.7rem'; this.style.borderRadius='3px'; } if(window.innerWidth <= 375) { this.style.fontSize='0.6rem'; this.style.borderRadius='2px'; }"
-               style="image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges; filter: brightness(1.02) contrast(1.05) saturate(1.08);">
+               style="opacity: 0.8; transform: scale(0.98); transition: opacity 0.3s ease, transform 0.3s ease, filter 0.3s ease; image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges; filter: brightness(1.02) contrast(1.05) saturate(1.08);">
         </div>
         <div class="card-body">
           <h5 class="card-title">${product.name}</h5>
@@ -419,6 +418,9 @@ function initializeWishlistButtons() {
 document.addEventListener('DOMContentLoaded', () => {
   updateCartCounter();
   initializeCartDropdown();
+  
+  // Sofortige Platzhalter für fehlende Bilder anwenden
+  applyPlaceholdersForMissingImages();
 
   const searchInput = document.getElementById('searchInput');
   const categoryFilter = document.getElementById('categoryFilter');
@@ -456,8 +458,9 @@ document.addEventListener('DOMContentLoaded', () => {
     );
     renderProducts(sorted);
     
-    // Bilder optimieren
+    // Bilder optimieren und Platzhalter anwenden
     optimizeImages();
+    setTimeout(applyPlaceholdersForMissingImages, 100); // Verzögerung für bessere Erkennung
   });
 
   const clearCartBtn = document.getElementById('clearCart');
@@ -475,29 +478,40 @@ function optimizeImages() {
   images.forEach(img => {
     // Fallback für fehlende Bilder mit verbessertem Design
     img.addEventListener('error', function() {
-      this.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
-      this.style.display = 'flex';
-      this.style.alignItems = 'center';
-      this.style.justifyContent = 'center';
-      this.style.color = 'rgba(255,255,255,0.9)';
-      this.style.fontSize = '1.5rem';
-      this.style.fontWeight = '600';
-      this.style.borderRadius = '8px';
-      this.style.boxShadow = '0 2px 8px rgba(102,126,234,0.15)';
-      this.innerHTML = '📦';
-      
-      // Mobile Anpassungen für Platzhalter
-      if (window.innerWidth <= 600) {
-        this.style.fontSize = '0.8rem';
-        this.style.borderRadius = '4px';
-      }
-      if (window.innerWidth <= 414) {
-        this.style.fontSize = '0.7rem';
-        this.style.borderRadius = '3px';
-      }
-      if (window.innerWidth <= 375) {
-        this.style.fontSize = '0.6rem';
-        this.style.borderRadius = '2px';
+      // Prüfe ob das Bild wirklich fehlt (nicht nur noch lädt)
+      if (this.src && !this.src.includes('data:') && !this.src.includes('blob:')) {
+        // Entferne das alte src-Attribut
+        this.removeAttribute('src');
+        
+        // Setze den Platzhalter-Hintergrund
+        this.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+        this.style.display = 'flex';
+        this.style.alignItems = 'center';
+        this.style.justifyContent = 'center';
+        this.style.color = 'rgba(255,255,255,0.9)';
+        this.style.fontSize = '1.5rem';
+        this.style.fontWeight = '600';
+        this.style.borderRadius = '8px';
+        this.style.boxShadow = '0 2px 8px rgba(102,126,234,0.15)';
+        this.style.position = 'relative';
+        this.style.overflow = 'hidden';
+        
+        // Füge das 📦-Symbol hinzu
+        this.innerHTML = '📦';
+        
+        // Mobile Anpassungen für Platzhalter
+        if (window.innerWidth <= 600) {
+          this.style.fontSize = '0.8rem';
+          this.style.borderRadius = '4px';
+        }
+        if (window.innerWidth <= 414) {
+          this.style.fontSize = '0.7rem';
+          this.style.borderRadius = '3px';
+        }
+        if (window.innerWidth <= 375) {
+          this.style.fontSize = '0.6rem';
+          this.style.borderRadius = '2px';
+        }
       }
     });
     
@@ -506,6 +520,20 @@ function optimizeImages() {
       this.style.opacity = '1';
       this.style.transform = 'scale(1)';
       this.style.filter = 'brightness(1.02) contrast(1.05) saturate(1.08)';
+      
+      // Entferne Platzhalter-Styles wenn Bild geladen ist
+      this.style.background = '';
+      this.style.display = '';
+      this.style.alignItems = '';
+      this.style.justifyContent = '';
+      this.style.color = '';
+      this.style.fontSize = '';
+      this.style.fontWeight = '';
+      this.style.borderRadius = '';
+      this.style.boxShadow = '';
+      this.style.position = '';
+      this.style.overflow = '';
+      this.innerHTML = '';
     });
     
     // Initiale Lade-Animation
@@ -517,6 +545,63 @@ function optimizeImages() {
     if (window.innerWidth <= 600) {
       img.style.imageRendering = '-webkit-optimize-contrast';
       img.style.imageRendering = 'crisp-edges';
+    }
+    
+    // Prüfe ob das Bild bereits fehlerhaft ist (nur bei wirklich fehlenden Bildern)
+    if (img.complete && img.naturalWidth === 0 && img.src && !img.src.includes('data:') && !img.src.includes('blob:')) {
+      // Warte kurz und prüfe nochmal
+      setTimeout(() => {
+        if (img.naturalWidth === 0) {
+          img.dispatchEvent(new Event('error'));
+        }
+      }, 100);
+    }
+  });
+}
+
+// Funktion zum sofortigen Anwenden von Platzhaltern für fehlende Bilder
+function applyPlaceholdersForMissingImages() {
+  const images = document.querySelectorAll('img');
+  images.forEach(img => {
+    // Prüfe ob das Bild bereits fehlerhaft ist (nur bei wirklich fehlenden Bildern)
+    if (img.complete && img.naturalWidth === 0 && img.src && !img.src.includes('data:') && !img.src.includes('blob:')) {
+      // Warte kurz und prüfe nochmal, um sicherzustellen, dass das Bild wirklich fehlt
+      setTimeout(() => {
+        if (img.naturalWidth === 0) {
+          // Entferne das alte src-Attribut
+          img.removeAttribute('src');
+          
+          // Setze den Platzhalter-Hintergrund
+          img.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+          img.style.display = 'flex';
+          img.style.alignItems = 'center';
+          img.style.justifyContent = 'center';
+          img.style.color = 'rgba(255,255,255,0.9)';
+          img.style.fontSize = '1.5rem';
+          img.style.fontWeight = '600';
+          img.style.borderRadius = '8px';
+          img.style.boxShadow = '0 2px 8px rgba(102,126,234,0.15)';
+          img.style.position = 'relative';
+          img.style.overflow = 'hidden';
+          
+          // Füge das 📦-Symbol hinzu
+          img.innerHTML = '📦';
+          
+          // Mobile Anpassungen für Platzhalter
+          if (window.innerWidth <= 600) {
+            img.style.fontSize = '0.8rem';
+            img.style.borderRadius = '4px';
+          }
+          if (window.innerWidth <= 414) {
+            img.style.fontSize = '0.7rem';
+            img.style.borderRadius = '3px';
+          }
+          if (window.innerWidth <= 375) {
+            img.style.fontSize = '0.6rem';
+            img.style.borderRadius = '2px';
+          }
+        }
+      }, 200);
     }
   });
 }

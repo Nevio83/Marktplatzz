@@ -13,6 +13,9 @@ img {
     /* Anti-Aliasing */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    /* Smooth Scaling */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
 }
 
 /* Platzhalter-Bilder werden nur per JavaScript behandelt */
@@ -69,6 +72,10 @@ img {
     transition: transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
     object-fit: cover;
     object-position: center;
+    width: 100%;
+    height: 100%;
+    min-height: 200px;
+    max-height: 200px;
     /* Bildqualität verbessern */
     image-rendering: -webkit-optimize-contrast;
     image-rendering: crisp-edges;
@@ -76,6 +83,9 @@ img {
     filter: brightness(1.02) contrast(1.05) saturate(1.1);
     /* Subtiler Schatten für mehr Tiefe */
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    /* Smooth Scaling */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
 }
 
 /* Platzhalter für Produktkarten werden per JavaScript behandelt */
@@ -457,6 +467,25 @@ footer {
     padding: 0 10px;
   }
   
+  /* Kategorie-Grid für mobile Geräte - 4 Spalten */
+  .category-grid .row {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    margin-left: -2px !important;
+    margin-right: -2px !important;
+  }
+  
+  .category-grid .col,
+  .category-grid [class^="col-"],
+  .category-grid .col-md-3,
+  .category-grid .col-lg-2 {
+    flex: 0 0 25% !important;
+    max-width: 25% !important;
+    padding-left: 2px !important;
+    padding-right: 2px !important;
+    margin-bottom: 4px !important;
+  }
+  
   /* Navigation optimiert */
   .navbar {
     padding: 0.3rem 0;
@@ -485,14 +514,14 @@ footer {
   }
   
   /* Kategorie-Tiles kompakter */
-  .category-tile {
-    margin-bottom: 0.8rem;
-  }
-  
-  .category-label {
-    font-size: 1.1rem;
-    padding: 0.4rem 0;
-  }
+.category-tile {
+  margin-bottom: 0.2rem;
+}
+
+.category-label {
+  font-size: 0.8rem;
+  padding: 0.2rem 0;
+}
   
   /* Filter kompakter */
   .form-select {
@@ -586,6 +615,25 @@ footer {
 
 /* Erweiterte Mobile Optimierungen - Ultra Kompakt */
 @media (max-width: 600px) {
+  /* Kategorie-Grid für mobile Geräte - 4 Spalten */
+  .category-grid .row {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    margin-left: -1px !important;
+    margin-right: -1px !important;
+  }
+  
+  .category-grid .col,
+  .category-grid [class^="col-"],
+  .category-grid .col-md-3,
+  .category-grid .col-lg-2 {
+    flex: 0 0 25% !important;
+    max-width: 25% !important;
+    padding-left: 1px !important;
+    padding-right: 1px !important;
+    margin-bottom: 2px !important;
+  }
+  
   /* Grid-Layout für mobile Geräte - 2 Spalten */
   #productGrid.row {
     display: flex !important;
@@ -610,42 +658,42 @@ footer {
   .product-card {
     min-width: 0 !important;
     max-width: 100% !important;
-    margin-bottom: 2px !important;
-    border-radius: 6px !important;
+    margin-bottom: 1px !important;
+    border-radius: 4px !important;
     box-shadow: 0 1px 2px rgba(0,0,0,0.05) !important;
     border: 1px solid #f0f0f0 !important;
   }
   
   .product-card .card-body {
-    padding: 4px 6px 6px 6px !important;
+    padding: 2px 4px 4px 4px !important;
   }
   
   .product-card .card-title {
-    font-size: 0.7rem !important;
+    font-size: 0.6rem !important;
     margin-bottom: 1px !important;
     line-height: 1.1 !important;
     font-weight: 600 !important;
   }
   
   .product-card .card-text {
-    font-size: 0.6rem !important;
-    margin-bottom: 2px !important;
+    font-size: 0.5rem !important;
+    margin-bottom: 1px !important;
     line-height: 1.1 !important;
     color: #666 !important;
   }
   
   .product-card .h4 {
-    font-size: 0.7rem !important;
+    font-size: 0.6rem !important;
     font-weight: 700 !important;
     color: #667eea !important;
   }
   
   .product-card .btn.add-to-cart {
-    font-size: 0.65rem !important;
-    padding: 3px 6px !important;
-    border-radius: 4px !important;
+    font-size: 0.55rem !important;
+    padding: 2px 4px !important;
+    border-radius: 3px !important;
     width: 100% !important;
-    margin-top: 2px !important;
+    margin-top: 1px !important;
   }
   
   .product-card .wishlist-btn {
@@ -661,9 +709,10 @@ footer {
   }
   
   .product-image-container img.card-img-top {
-    height: 45px !important;
-    min-height: 45px !important;
-    max-height: 45px !important;
+    height: 120px !important;
+    min-height: 120px !important;
+    max-height: 120px !important;
+    width: 100% !important;
     object-fit: cover !important;
     object-position: center !important;
     border-radius: 4px !important;
@@ -674,13 +723,13 @@ footer {
     filter: brightness(1.03) contrast(1.06) saturate(1.12) !important;
     /* Subtiler Schatten */
     box-shadow: 0 1px 3px rgba(0,0,0,0.1) !important;
-  }
+}
   
   /* Platzhalter für mobile Produktkarten werden per JavaScript behandelt */
   
   .ratio.ratio-4x3.product-image-container {
-    min-height: 45px !important;
-    max-height: 45px !important;
+    min-height: 120px !important;
+    max-height: 120px !important;
   }
   
   .product-card .small {
@@ -703,10 +752,10 @@ footer {
   }
   
   /* Kategorie-Tiles extrem kompakt */
-  .category-label {
-    font-size: 0.8rem !important;
-    padding: 0.2rem 0 !important;
-  }
+.category-label {
+  font-size: 0.7rem !important;
+  padding: 0.15rem 0 !important;
+}
   
   /* Filter extrem kompakt */
   .form-select {
@@ -728,25 +777,37 @@ footer {
   
   /* Abstände extrem reduzieren */
   .my-5 {
-    margin-top: 1rem !important;
-    margin-bottom: 1rem !important;
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
   }
   
   .mt-5 {
-    margin-top: 1rem !important;
+    margin-top: 0.5rem !important;
   }
   
   .mb-4 {
-    margin-bottom: 0.8rem !important;
+    margin-bottom: 0.4rem !important;
   }
   
   .py-5 {
-    padding-top: 1rem !important;
-    padding-bottom: 1rem !important;
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
   }
 }
 
 @media (max-width: 414px) {
+  /* Kategorie-Grid für sehr kleine Handys - 4 Spalten */
+  .category-grid .col,
+  .category-grid [class^="col-"],
+  .category-grid .col-md-3,
+  .category-grid .col-lg-2 {
+    flex: 0 0 25% !important;
+    max-width: 25% !important;
+    padding-left: 1px !important;
+    padding-right: 1px !important;
+    margin-bottom: 1px !important;
+  }
+  
   /* Grid-Layout für sehr kleine Handys */
   #productGrid .col,
   #productGrid [class^="col-"],
@@ -790,9 +851,10 @@ footer {
   }
   
   .product-image-container img.card-img-top {
-    height: 40px !important;
-    min-height: 40px !important;
-    max-height: 40px !important;
+    height: 100px !important;
+    min-height: 100px !important;
+    max-height: 100px !important;
+    width: 100% !important;
     object-fit: cover !important;
     object-position: center !important;
     border-radius: 3px !important;
@@ -803,13 +865,13 @@ footer {
     filter: brightness(1.04) contrast(1.07) saturate(1.13) !important;
     /* Subtiler Schatten */
     box-shadow: 0 1px 2px rgba(0,0,0,0.12) !important;
-  }
+}
   
   /* Platzhalter für kleine Handys werden per JavaScript behandelt */
   
   .ratio.ratio-4x3.product-image-container {
-    min-height: 40px !important;
-    max-height: 40px !important;
+    min-height: 100px !important;
+    max-height: 100px !important;
   }
   
   .product-card .wishlist-btn {
@@ -848,10 +910,10 @@ footer {
   }
   
   /* Kategorie-Tiles ultra minimal */
-  .category-label {
-    font-size: 0.7rem !important;
-    padding: 0.15rem 0 !important;
-  }
+.category-label {
+  font-size: 0.6rem !important;
+  padding: 0.1rem 0 !important;
+}
   
   /* Filter ultra minimal */
   .form-select {
@@ -887,6 +949,18 @@ footer {
 
 /* Extra kleine Handys (iPhone SE, etc.) */
 @media (max-width: 375px) {
+  /* Kategorie-Grid für iPhone SE - 4 Spalten */
+  .category-grid .col,
+  .category-grid [class^="col-"],
+  .category-grid .col-md-3,
+  .category-grid .col-lg-2 {
+    flex: 0 0 25% !important;
+    max-width: 25% !important;
+    padding-left: 1px !important;
+    padding-right: 1px !important;
+    margin-bottom: 1px !important;
+  }
+  
   /* Grid-Layout für iPhone SE */
   #productGrid .col,
   #productGrid [class^="col-"],
@@ -930,9 +1004,10 @@ footer {
   }
   
   .product-image-container img.card-img-top {
-    height: 35px !important;
-    min-height: 35px !important;
-    max-height: 35px !important;
+    height: 80px !important;
+    min-height: 80px !important;
+    max-height: 80px !important;
+    width: 100% !important;
     object-fit: cover !important;
     object-position: center !important;
     border-radius: 2px !important;
@@ -943,13 +1018,13 @@ footer {
     filter: brightness(1.05) contrast(1.08) saturate(1.14) !important;
     /* Subtiler Schatten */
     box-shadow: 0 1px 2px rgba(0,0,0,0.15) !important;
-  }
+}
   
   /* Platzhalter für iPhone SE werden per JavaScript behandelt */
   
   .ratio.ratio-4x3.product-image-container {
-    min-height: 35px !important;
-    max-height: 35px !important;
+    min-height: 80px !important;
+    max-height: 80px !important;
   }
   
   .product-card .wishlist-btn {
@@ -988,10 +1063,10 @@ footer {
   }
   
   /* Kategorie-Tiles iPhone SE */
-  .category-label {
-    font-size: 0.6rem !important;
-    padding: 0.1rem 0 !important;
-  }
+.category-label {
+  font-size: 0.5rem !important;
+  padding: 0.08rem 0 !important;
+}
   
   /* Filter iPhone SE */
   .form-select {
