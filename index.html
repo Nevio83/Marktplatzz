@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <!-- Start cookieyes banner --> <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/8e12f1f6a93c31ea65a1052f/script.js"></script> <!-- End cookieyes banner -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marktplatz - Startseite</title>
+    <meta name="description" content="Online-Marktplatz mit besten Angeboten">
+    <meta name="keywords" content="ecommerce, online shopping, elektronik, mode">
+    
+    <!-- Stylesheets -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-light bg-light shadow-sm">
+      <div class="container-fluid nav-flex">
+        <a class="navbar-brand fw-bold mb-0 h1" href="#">Marktplatz</a>
+        <form class="search-form mx-auto">
+          <div class="input-group">
+            <input type="search" id="searchInput" class="form-control rounded-pill" placeholder="Suche...">
+            <button class="btn btn-primary rounded-pill px-3" type="submit" aria-label="Suchen">
+              <i class="bi bi-search"></i>
+            </button>
+          </div>
+        </form>
+        <div class="nav-icons d-flex align-items-center gap-3">
+          <a href="wishlist.html" id="wishlistButton" class="nav-icon-link">
+            <i class="bi bi-heart" id="heartIcon"></i>
+          </a>
+          <a href="#" id="cartButton" class="nav-icon-link position-relative">
+            <i class="bi bi-cart3"></i>
+            <span id="cartCounter">0</span>
+          </a>
+          <!-- Warenkorb Dropdown -->
+          <div class="cart-dropdown" id="cartDropdown">
+            <div class="cart-dropdown-header">
+              <h6 class="mb-0">Warenkorb</h6>
+              <button class="btn-close" id="closeCartDropdown"></button>
+            </div>
+            <div class="cart-dropdown-body" id="cartDropdownBody">
+              <div class="empty-cart text-center py-4" id="emptyCartMessage">
+                <i class="bi bi-cart-x fs-1 text-muted"></i>
+                <p class="text-muted mt-2">Ihr Warenkorb ist leer</p>
+              </div>
+            </div>
+            <div class="cart-dropdown-footer" id="cartDropdownFooter" style="display: none;">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <strong>Gesamt: €<span id="cartTotal">0.00</span></strong>
+              </div>
+              <div class="d-grid gap-2">
+                <a href="cart.html" class="btn btn-primary">Zur Kasse</a>
+                <button class="btn btn-outline-secondary" id="clearCart">Warenkorb leeren</button>
+              </div>
+            </div>
+          </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+      
+        <!-- Product Grid -->
+        <section class="container my-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="fw-bold fs-1 mb-0">Unsere Kategorien</h2>
+    <a href="#productGrid" class="btn btn-outline-dark px-4 py-2">Alle Produkte entdecken</a>
+  </div>
+  <div class="row g-4">
+    <div class="col-md-3">
+      <a href="#" class="category-tile" data-category="Elektronik">
+        <img src="produkt bilder/ware.png" alt="Elektronik" class="img-fluid rounded-4 w-100" style="aspect-ratio: 4/3; object-fit: cover;">
+        <span class="category-label">Elektronik</span>
+      </a>
+    </div>
+    <div class="col-md-3">
+      <a href="#" class="category-tile" data-category="Mode">
+        <img src="produkt bilder/ware.png" alt="Mode" class="img-fluid rounded-4 w-100" style="aspect-ratio: 4/3; object-fit: cover;">
+        <span class="category-label">Mode</span>
+      </a>
+    </div>
+    <div class="col-md-3">
+      <a href="#" class="category-tile" data-category="Fitness">
+        <img src="produkt bilder/ware.png" alt="Fitness" class="img-fluid rounded-4 w-100" style="aspect-ratio: 4/3; object-fit: cover;">
+        <span class="category-label">Fitness</span>
+      </a>
+    </div>
+    <div class="col-md-3">
+      <a href="#" class="category-tile" data-category="Haushalt">
+        <img src="produkt bilder/ware.png" alt="Haushalt" class="img-fluid rounded-4 w-100" style="aspect-ratio: 4/3; object-fit: cover;">
+        <span class="category-label">Haushalt</span>
+      </a>
+    </div>
+  </div>
+</section>
+        <div class="container mt-5">
+            <div class="row mb-4">
+                <div class="col-md-4">
+                    <select class="form-select rounded-pill" id="categoryFilter">
+                        <option>Alle Kategorien</option>
+                        <option>Elektronik</option>
+                        <option>Fitness</option>
+                        <option>Mode</option>
+                        <option>Haushalt</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <select class="form-select rounded-pill" id="priceSort">
+                        <option>Aufsteigend</option>
+                        <option>Absteigend</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4" id="productGrid">
+                <!-- Hier rendert das JS die Produkte dynamisch -->
+            </div>
+        </div>
+</main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white mt-5 pt-5 border-top">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <h5 class="mb-3">Über uns</h5>
+                    <p class="text-muted">Ihr vertrauenswürdiger Online-Marktplatz seit 2024.</p>
+                    <div class="social-icons">
+                        <a href="#" class="text-white me-3" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="text-white me-3" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="text-white" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <h5 class="mb-3">Einkaufen</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white text-decoration-none">Angebote</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Neue Produkte</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Kategorien</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2">
+                    <h5 class="mb-3">Support</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="kontakt.html" class="text-white text-decoration-none">Kontakt</a></li>
+                        <li><a href="versand.html" class="text-white text-decoration-none">Versand</a></li>
+                        <li><a href="retouren.html" class="text-white text-decoration-none">Retouren</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center py-4 text-muted">
+                © 2024 Marktplatz - Alle Rechte vorbehalten
+            </div>
+        </div>
+    </footer>
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="app.js"></script>
+    <!-- Nach oben Button -->
+    <button id="scrollToTopBtn" aria-label="Nach oben" style="display:none; position:fixed; bottom:96px; left:32px; z-index:11000; width:56px; height:56px; border-radius:50%; background:linear-gradient(135deg,#667eea,#764ba2); color:#fff; border:none; box-shadow:0 4px 16px rgba(102,126,234,0.18); font-size:2rem; display:flex; align-items:center; justify-content:center; transition:background 0.2s, box-shadow 0.2s; cursor:pointer;">
+      <span style="display:flex; align-items:center; justify-content:center; width:100%; height:100%;"><i class="bi bi-arrow-up"></i></span>
+    </button>
+    <script>
+      const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          scrollToTopBtn.classList.add('show');
+        } else {
+          scrollToTopBtn.classList.remove('show');
+        }
+      });
+      scrollToTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    </script>
+
+<!-- Hilfe-Button und Panel (modernes Design) -->
+<div id="hilfeButton" aria-label="Hilfe öffnen">
+  <i class="bi bi-question-circle"></i>
+</div>
+<div id="hilfePanel" class="hilfe-panel">
+  <div class="hilfe-panel-header">
+    <i class="bi bi-question-circle"></i>
+    <span>Hilfe & Support</span>
+    <button id="hilfePanelClose" aria-label="Hilfe schließen">&times;</button>
+  </div>
+  <div class="hilfe-themen-modern">
+    <button class="hilfe-thema-btn">Adresse ändern</button>
+    <button class="hilfe-thema-btn">Bestellung stornieren</button>
+    <button class="hilfe-thema-btn">Versand & Lieferzeiten</button>
+    <button class="hilfe-thema-btn">Mehrere Rabattcodes</button>
+    <button class="hilfe-thema-btn">Was ist Käuferschutz?</button>
+  </div>
+</div>
+<script>
+  const hilfeButton = document.getElementById('hilfeButton');
+  const hilfePanel = document.getElementById('hilfePanel');
+  const hilfePanelClose = document.getElementById('hilfePanelClose');
+  hilfeButton.addEventListener('click', () => {
+    hilfePanel.classList.add('offen');
+  });
+  hilfePanelClose.addEventListener('click', () => {
+    hilfePanel.classList.remove('offen');
+  });
+  // Schließe das Panel beim Klick außerhalb
+  document.addEventListener('mousedown', function(event) {
+    if (
+      hilfePanel.classList.contains('offen') &&
+      !hilfePanel.contains(event.target) &&
+      !hilfeButton.contains(event.target)
+    ) {
+      hilfePanel.classList.remove('offen');
+    }
+  });
+</script>
+<script>
+  // Herz-Icon bei Hover füllen
+  const heartIcon = document.getElementById('heartIcon');
+  const wishlistButton = document.getElementById('wishlistButton');
+  wishlistButton.addEventListener('mouseenter', () => {
+    heartIcon.classList.remove('bi-heart');
+    heartIcon.classList.add('bi-heart-fill');
+  });
+  wishlistButton.addEventListener('mouseleave', () => {
+    heartIcon.classList.remove('bi-heart-fill');
+    heartIcon.classList.add('bi-heart');
+  });
+</script>
+</body>
+</html>

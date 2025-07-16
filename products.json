@@ -1,0 +1,338 @@
+[
+  { 
+    "id": 1, 
+    "name": "Elektronik Produkt 1", 
+    "price": 10.00, 
+    "category": "Elektronik", 
+    "image": "produkt bilder/ware.png", 
+    "description": "Innovative Technologie für Ihren Alltag.",
+    "bundles": [
+      {
+        "id": "bundle1",
+        "name": "Starter Bundle",
+        "description": "Produkt + Zubehör",
+        "items": ["Zubehör Set", "Anleitung"],
+        "originalPrice": 15.00,
+        "bundlePrice": 12.00,
+        "savings": 3.00
+      },
+      {
+        "id": "bundle2", 
+        "name": "Premium Bundle",
+        "description": "Produkt + Zubehör + Garantie",
+        "items": ["Zubehör Set", "Erweiterte Garantie", "Premium Support"],
+        "originalPrice": 25.00,
+        "bundlePrice": 18.00,
+        "savings": 7.00
+      }
+    ]
+  },
+  { 
+    "id": 2, 
+    "name": "Elektronik Produkt 2", 
+    "price": 12.00, 
+    "category": "Elektronik", 
+    "image": "produkt bilder/ware.png", 
+    "description": "Innovative Technologie für Ihren Alltag.",
+    "bundles": [
+      {
+        "id": "bundle1",
+        "name": "Basic Bundle",
+        "description": "Produkt + Grundzubehör",
+        "items": ["Kabel Set", "Handbuch"],
+        "originalPrice": 18.00,
+        "bundlePrice": 15.00,
+        "savings": 3.00
+      },
+      {
+        "id": "bundle2",
+        "name": "Complete Bundle",
+        "description": "Alles inklusive",
+        "items": ["Kabel Set", "Erweiterte Garantie", "Installationsservice"],
+        "originalPrice": 30.00,
+        "bundlePrice": 22.00,
+        "savings": 8.00
+      }
+    ]
+  },
+  { 
+    "id": 3, 
+    "name": "Elektronik Produkt 3", 
+    "price": 14.00, 
+    "category": "Elektronik", 
+    "image": "produkt bilder/ware.png", 
+    "description": "Innovative Technologie für Ihren Alltag.",
+    "bundles": [
+      {
+        "id": "bundle1",
+        "name": "Starter Pack",
+        "description": "Produkt + Essentials",
+        "items": ["Adapter", "Schnellstart Guide"],
+        "originalPrice": 20.00,
+        "bundlePrice": 17.00,
+        "savings": 3.00
+      },
+      {
+        "id": "bundle2",
+        "name": "Professional Pack",
+        "description": "Für Profis",
+        "items": ["Adapter", "Professionelle Installation", "Lifetime Support"],
+        "originalPrice": 35.00,
+        "bundlePrice": 25.00,
+        "savings": 10.00
+      }
+    ]
+  },
+  { 
+    "id": 4, 
+    "name": "Mode Produkt 1", 
+    "price": 20.00, 
+    "category": "Mode", 
+    "image": "produkt bilder/ware.png", 
+    "description": "Modisch und hochwertig für jeden Anlass.",
+    "bundles": [
+      {
+        "id": "bundle1",
+        "name": "Style Bundle",
+        "description": "Produkt + Accessoires",
+        "items": ["Passendes Accessoire", "Pflegeanleitung"],
+        "originalPrice": 30.00,
+        "bundlePrice": 25.00,
+        "savings": 5.00
+      },
+      {
+        "id": "bundle2",
+        "name": "Complete Look",
+        "description": "Vollständiges Outfit",
+        "items": ["Passendes Accessoire", "Zusätzliches Teil", "Styling Beratung"],
+        "originalPrice": 50.00,
+        "bundlePrice": 35.00,
+        "savings": 15.00
+      }
+    ]
+  },
+  { 
+    "id": 5, 
+    "name": "Mode Produkt 2", 
+    "price": 22.00, 
+    "category": "Mode", 
+    "image": "produkt bilder/ware.png", 
+    "description": "Modisch und hochwertig für jeden Anlass.",
+    "bundles": [
+      {
+        "id": "bundle1",
+        "name": "Fashion Pack",
+        "description": "Produkt + Styling",
+        "items": ["Styling Guide", "Pflegeprodukt"],
+        "originalPrice": 32.00,
+        "bundlePrice": 28.00,
+        "savings": 4.00
+      },
+      {
+        "id": "bundle2",
+        "name": "Wardrobe Essential",
+        "description": "Komplettes Set",
+        "items": ["Styling Guide", "Zusätzliches Teil", "Personal Styling"],
+        "originalPrice": 55.00,
+        "bundlePrice": 40.00,
+        "savings": 15.00
+      }
+    ]
+  },
+  { 
+    "id": 6, 
+    "name": "Mode Produkt 3", 
+    "price": 24.00, 
+    "category": "Mode", 
+    "image": "produkt bilder/ware.png", 
+    "description": "Modisch und hochwertig für jeden Anlass.",
+    "bundles": [
+      {
+        "id": "bundle1",
+        "name": "Trend Bundle",
+        "description": "Produkt + Trend Accessoires",
+        "items": ["Trend Accessoire", "Styling Tipps"],
+        "originalPrice": 35.00,
+        "bundlePrice": 30.00,
+        "savings": 5.00
+      },
+      {
+        "id": "bundle2",
+        "name": "Trendsetter Pack",
+        "description": "Kompletter Look",
+        "items": ["Trend Accessoire", "Zusätzliches Teil", "Personal Styling"],
+        "originalPrice": 60.00,
+        "bundlePrice": 45.00,
+        "savings": 15.00
+      }
+    ]
+  },
+  { 
+    "id": 7, 
+    "name": "Fitness Produkt 1", 
+    "price": 30.00, 
+    "category": "Fitness", 
+    "image": "produkt bilder/ware.png", 
+    "description": "Für ein aktives und gesundes Leben.",
+    "bundles": [
+      {
+        "id": "bundle1",
+        "name": "Fitness Starter",
+        "description": "Produkt + Grundausstattung",
+        "items": ["Trainingsplan", "Grundausstattung"],
+        "originalPrice": 45.00,
+        "bundlePrice": 38.00,
+        "savings": 7.00
+      },
+      {
+        "id": "bundle2",
+        "name": "Fitness Pro",
+        "description": "Komplettes Training",
+        "items": ["Trainingsplan", "Premium Ausstattung", "Personal Trainer"],
+        "originalPrice": 80.00,
+        "bundlePrice": 60.00,
+        "savings": 20.00
+      }
+    ]
+  },
+  { 
+    "id": 8, 
+    "name": "Fitness Produkt 2", 
+    "price": 32.00, 
+    "category": "Fitness", 
+    "image": "produkt bilder/ware.png", 
+    "description": "Für ein aktives und gesundes Leben.",
+    "bundles": [
+      {
+        "id": "bundle1",
+        "name": "Workout Bundle",
+        "description": "Produkt + Training",
+        "items": ["Workout Guide", "Zubehör"],
+        "originalPrice": 48.00,
+        "bundlePrice": 40.00,
+        "savings": 8.00
+      },
+      {
+        "id": "bundle2",
+        "name": "Elite Training",
+        "description": "Professionelles Training",
+        "items": ["Workout Guide", "Premium Zubehör", "Online Coaching"],
+        "originalPrice": 85.00,
+        "bundlePrice": 65.00,
+        "savings": 20.00
+      }
+    ]
+  },
+  { 
+    "id": 9, 
+    "name": "Fitness Produkt 3", 
+    "price": 34.00, 
+    "category": "Fitness", 
+    "image": "produkt bilder/ware.png", 
+    "description": "Für ein aktives und gesundes Leben.",
+    "bundles": [
+      {
+        "id": "bundle1",
+        "name": "Active Bundle",
+        "description": "Produkt + Aktivität",
+        "items": ["Aktivitätsplan", "Equipment"],
+        "originalPrice": 50.00,
+        "bundlePrice": 42.00,
+        "savings": 8.00
+      },
+      {
+        "id": "bundle2",
+        "name": "Champion Pack",
+        "description": "Für Champions",
+        "items": ["Aktivitätsplan", "Premium Equipment", "Champion Coaching"],
+        "originalPrice": 90.00,
+        "bundlePrice": 70.00,
+        "savings": 20.00
+      }
+    ]
+  },
+  { 
+    "id": 10, 
+    "name": "Haushalt Produkt 1", 
+    "price": 40.00, 
+    "category": "Haushalt", 
+    "image": "produkt bilder/ware.png", 
+    "description": "Praktisch und zuverlässig für Ihr Zuhause.",
+    "bundles": [
+      {
+        "id": "bundle1",
+        "name": "Home Bundle",
+        "description": "Produkt + Haushaltszubehör",
+        "items": ["Haushaltszubehör", "Pflegeanleitung"],
+        "originalPrice": 60.00,
+        "bundlePrice": 50.00,
+        "savings": 10.00
+      },
+      {
+        "id": "bundle2",
+        "name": "Complete Home",
+        "description": "Komplettes Haushalts-Set",
+        "items": ["Haushaltszubehör", "Premium Pflege", "Installationsservice"],
+        "originalPrice": 100.00,
+        "bundlePrice": 75.00,
+        "savings": 25.00
+      }
+    ]
+  },
+  { 
+    "id": 11, 
+    "name": "Haushalt Produkt 2", 
+    "price": 42.00, 
+    "category": "Haushalt", 
+    "image": "produkt bilder/ware.png", 
+    "description": "Praktisch und zuverlässig für Ihr Zuhause.",
+    "bundles": [
+      {
+        "id": "bundle1",
+        "name": "Household Pack",
+        "description": "Produkt + Haushaltshilfe",
+        "items": ["Haushaltshilfe", "Bedienungsanleitung"],
+        "originalPrice": 62.00,
+        "bundlePrice": 52.00,
+        "savings": 10.00
+      },
+      {
+        "id": "bundle2",
+        "name": "Smart Home",
+        "description": "Intelligentes Zuhause",
+        "items": ["Haushaltshilfe", "Smart Features", "Installation"],
+        "originalPrice": 105.00,
+        "bundlePrice": 80.00,
+        "savings": 25.00
+      }
+    ]
+  },
+  { 
+    "id": 12, 
+    "name": "Haushalt Produkt 3", 
+    "price": 44.00, 
+    "category": "Haushalt", 
+    "image": "produkt bilder/ware.png", 
+    "description": "Praktisch und zuverlässig für Ihr Zuhause.",
+    "bundles": [
+      {
+        "id": "bundle1",
+        "name": "Home Essential",
+        "description": "Produkt + Essentials",
+        "items": ["Haushalts Essentials", "Anleitung"],
+        "originalPrice": 64.00,
+        "bundlePrice": 54.00,
+        "savings": 10.00
+      },
+      {
+        "id": "bundle2",
+        "name": "Premium Home",
+        "description": "Premium Haushalt",
+        "items": ["Haushalts Essentials", "Premium Service", "Installation"],
+        "originalPrice": 110.00,
+        "bundlePrice": 85.00,
+        "savings": 25.00
+      }
+    ]
+  }
+]

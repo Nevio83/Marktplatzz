@@ -1,0 +1,152 @@
+.product-hero {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 4rem 0;
+}
+.product-image {
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+.product-image:hover {
+    transform: scale(1.02);
+}
+.price-tag {
+    background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+/* Bundle-Box Styles (modern, Screenshot-Design) */
+.bundle-box {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 2px 16px #0001;
+    padding: 0 0 2.2rem 0;
+    max-width: 650px;
+    margin: 2.5rem auto 2rem auto;
+    border: 1.5px solid #e0e0e0;
+}
+.bundle-header {
+    text-align: center;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin: 2.2rem 0 1.7rem 0;
+    font-size: 1.5rem;
+    color: #764ba2;
+    position: relative;
+    text-transform: uppercase;
+}
+.bundle-card {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.7rem 1.2rem 1.2rem 1.2rem;
+    margin-bottom: 1.7rem;
+    border: 2.5px solid #eee;
+    border-radius: 16px;
+    transition: .2s;
+    border-color: #eee;
+    position: relative;
+    background: #faf9fd;
+}
+.bundle-card.selected {
+    border-color: #764ba2;
+    background: #fff;
+    box-shadow: 0 4px 18px #764ba233;
+}
+.bundle-radio {
+    width: 2.2rem;
+    height: 2.2rem;
+    flex-shrink: 0;
+    accent-color: #764ba2;
+    border-radius: 50%;
+    border: 2.5px solid #764ba2;
+    background: #fff;
+    margin-right: 0.5rem;
+}
+.bundle-radio:checked {
+    box-shadow: 0 0 0 4px #764ba233;
+}
+.bundle-info { flex: 1; }
+.bundle-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 0.2em;
+}
+.bundle-label {
+    display: inline-block;
+    background: #ede6fa;
+    color: #764ba2;
+    font-size: 1rem;
+    padding: .25em .9em;
+    border-radius: 8px;
+    margin-left: .8em;
+    vertical-align: middle;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+.bundle-badge {
+    position: absolute;
+    top: -1.3rem;
+    right: 1.3rem;
+    background: #764ba2;
+    color: #fff;
+    font-size: 1.05rem;
+    padding: .4em 1.2em;
+    border-radius: 2em;
+    z-index: 2;
+    box-shadow: 0 2px 8px #764ba233;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+.bundle-badge.popular { background: #764ba2; }
+.bundle-badge.savings { background: #ff6b6b; }
+.bundle-prices {
+    font-size: 1.18rem;
+    font-weight: 600;
+    color: #222;
+    margin-bottom: 0.2em;
+}
+.bundle-prices .old {
+    text-decoration: line-through;
+    color: #888;
+    font-size: 1.05rem;
+    font-weight: 400;
+    margin-left: 1em;
+}
+.bundle-prices .savings {
+    color: #ff6b6b;
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-left: 1em;
+}
+.bundle-total {
+    margin-top: .7em;
+    font-size: 1.08rem;
+    font-weight: 500;
+}
+.bundle-total b { font-size: 1.13rem; }
+.bundle-add-btn {
+    width: 100%;
+    font-size: 1.18rem;
+    padding: 1em 0;
+    margin-top: 1.7rem;
+    background: linear-gradient(45deg, #764ba2, #667eea);
+    border: none;
+    color: #fff;
+    font-weight: 700;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px #764ba233;
+    transition: background .2s, box-shadow .2s;
+    letter-spacing: 1px;
+}
+.bundle-add-btn:hover {
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    color: #fff;
+    box-shadow: 0 4px 16px #764ba244;
+} 
