@@ -304,12 +304,19 @@ function initializeCartDropdown() {
       e.preventDefault();
       renderCartDropdown();
       cartDropdown.classList.toggle('show');
+      // Sichtbarkeit für mobile Geräte absichern
+      if (cartDropdown.classList.contains('show')) {
+        cartDropdown.style.display = 'block';
+      } else {
+        cartDropdown.style.display = 'none';
+      }
     });
   }
   if (closeCartDropdown && cartDropdown) {
     closeCartDropdown.addEventListener('click', (e) => {
       e.preventDefault();
       cartDropdown.classList.remove('show');
+      cartDropdown.style.display = 'none'; // Overlay immer ausblenden
     });
   }
 }
