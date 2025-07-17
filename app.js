@@ -307,7 +307,8 @@ function initializeCartDropdown() {
     });
   }
   if (closeCartDropdown && cartDropdown) {
-    closeCartDropdown.addEventListener('click', () => {
+    closeCartDropdown.addEventListener('click', (e) => {
+      e.preventDefault();
       cartDropdown.classList.remove('show');
     });
   }

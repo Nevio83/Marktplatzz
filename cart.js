@@ -178,11 +178,28 @@ function onCountryChange() {
     }
 }
 
-// Karten-Dropdown Funktionalität
+// Karten-Dropdown Funktionalität mit Touch-Unterstützung
 function toggleCardDropdown() {
     const dropdown = document.getElementById('card-dropdown');
     const isVisible = dropdown.style.display === 'block';
     dropdown.style.display = isVisible ? 'none' : 'block';
+    
+    // Touch-Optimierung für mobile Geräte
+    if (isVisible) {
+        document.addEventListener('touchstart', handleOutsideClick, { passive: true, capture: true });
+    } else {
+        document.removeEventListener('touchstart', handleOutsideClick, { passive: true, capture: true });
+    }
+}
+
+function handleOutsideClick(e) {
+    const dropdown = document.getElementById('card-dropdown');
+    const button = document.querySelector('[onclick="toggleCardDropdown()"]');
+    
+    if (!dropdown.contains(e.target) && !button.contains(e.target)) {
+        dropdown.style.display = 'none';
+        document.removeEventListener('touchstart', handleOutsideClick, { passive: true, capture: true });
+    }
 }
 
 function selectCard(cardType) {

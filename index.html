@@ -39,7 +39,7 @@
           <div class="cart-dropdown" id="cartDropdown">
             <div class="cart-dropdown-header">
               <h6 class="mb-0">Warenkorb</h6>
-              <button class="btn-close" id="closeCartDropdown"></button>
+              <button class="btn-close" id="closeCartDropdown" aria-label="Schließen">×</button>
             </div>
             <div class="cart-dropdown-body" id="cartDropdownBody">
               <div class="empty-cart text-center py-4" id="emptyCartMessage">
@@ -250,6 +250,16 @@
   wishlistButton.addEventListener('mouseleave', () => {
     heartIcon.classList.remove('bi-heart-fill');
     heartIcon.classList.add('bi-heart');
+  });
+</script>
+<script>
+  // Funktionalität für den Schließen-Knopf (X) im Warenkorb-Dropdown
+  const closeCartDropdownButton = document.getElementById('closeCartDropdown');
+  const cartDropdown = document.getElementById('cartDropdown');
+
+  closeCartDropdownButton.addEventListener('click', () => {
+    // Entfernt die 'show'-Klasse, um das Dropdown zu schließen.
+    cartDropdown.classList.remove('show');
   });
 </script>
 </body>
