@@ -383,7 +383,7 @@ function renderCartDropdown() {
       <img src="${item.image}" class="cart-item-image" alt="${item.name}">
       <div class="cart-item-details">
         <div class="product-info">
-          <div class="cart-item-name">${item.name}</div>
+        <div class="cart-item-name">${item.name}</div>
         </div>
         <div class="price-info">
           <span>€${(typeof item.price === 'number' ? item.price.toFixed(2) : '0.00')}</span>

@@ -243,3 +243,97 @@
     padding-bottom: 1rem !important;
   }
 }
+
+/* Mobile Styles für Wunschliste */
+@media (max-width: 768px) {
+  .navbar-brand {
+    font-size: 1.5rem !important;
+  }
+  
+  .back-to-shop-btn {
+    font-size: 0.9rem !important;
+    padding: 0.5rem 1rem !important;
+  }
+  
+  .card-title {
+    font-size: 1.1rem !important;
+  }
+  
+  .card-text {
+    font-size: 0.9rem !important;
+  }
+  
+  .add-to-cart-btn {
+    font-size: 0.9rem !important;
+    padding: 0.5rem 1rem !important;
+  }
+  
+  .remove-wishlist-btn {
+    font-size: 0.9rem !important;
+    padding: 0.5rem !important;
+  }
+  
+  .wishlist-btn {
+    width: 2.5rem !important;
+    height: 2.5rem !important;
+    font-size: 1.2rem !important;
+  }
+  
+  #addAllToCart {
+    font-size: 1rem !important;
+    padding: 0.75rem 1.5rem !important;
+  }
+}
+
+/* Globale Styles für "Alle zum Warenkorb" Button */
+#addAllContainer {
+  display: none !important;
+}
+
+#addAllContainer.show {
+  display: flex !important;
+}
+
+/* Verstecke Button wenn Wunschliste leer ist */
+#wishlistEmpty:not([style*="display: none"]) ~ #addAllContainer {
+  display: none !important;
+}
+
+/* Zusätzliche Sicherheit - verstecke Button komplett */
+#addAllContainer[style*="display: none"],
+#addAllContainer[style*="visibility: hidden"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+@media (max-width: 480px) {
+  .navbar-brand {
+    font-size: 1.3rem !important;
+  }
+  
+  .back-to-shop-btn {
+    font-size: 0.8rem !important;
+    padding: 0.4rem 0.8rem !important;
+  }
+  
+  .card-title {
+    font-size: 1rem !important;
+  }
+  
+  .add-to-cart-btn {
+    font-size: 0.8rem !important;
+    padding: 0.4rem 0.8rem !important;
+  }
+  
+  .remove-wishlist-btn {
+    font-size: 0.8rem !important;
+    padding: 0.4rem !important;
+  }
+  
+  #addAllToCart {
+    font-size: 0.9rem !important;
+    padding: 0.6rem 1.2rem !important;
+  }
+}

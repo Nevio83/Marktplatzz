@@ -143,12 +143,20 @@
         grid.innerHTML = '';
         emptyMsg.style.display = 'block';
         addAllContainer.style.display = 'none';
+        addAllContainer.classList.remove('show');
+        addAllContainer.style.visibility = 'hidden';
+        addAllContainer.style.opacity = '0';
+        console.log('Wunschliste ist leer - Button versteckt'); // Debug
         return;
       }
       
       // Wunschliste hat Produkte - zeige Grid und "Alle zum Warenkorb" Button
       emptyMsg.style.display = 'none';
       addAllContainer.style.display = 'flex';
+      addAllContainer.style.visibility = 'visible';
+      addAllContainer.style.opacity = '1';
+      addAllContainer.classList.add('show');
+      console.log('Wunschliste hat Produkte - Button angezeigt'); // Debug
       grid.innerHTML = wishlist.map(product => {
         try {
           // Fallbacks für fehlende Felder
@@ -222,6 +230,18 @@
 
     document.addEventListener('DOMContentLoaded', function() {
       console.log('Wunschliste-Seite geladen'); // Debug
+      
+      // Initialisiere Button-Status
+      const addAllContainer = document.getElementById('addAllContainer');
+      const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+      
+      if (wishlist.length === 0) {
+        addAllContainer.style.display = 'none';
+        addAllContainer.style.visibility = 'hidden';
+        addAllContainer.style.opacity = '0';
+        addAllContainer.classList.remove('show');
+      }
+      
       renderWishlist();
       
       // Event-Listener für "Alle zum Warenkorb" Button

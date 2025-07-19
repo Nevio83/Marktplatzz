@@ -35,28 +35,7 @@
             <i class="bi bi-cart3"></i>
             <span id="cartCounter">0</span>
           </a>
-          <!-- Warenkorb Dropdown -->
-          <div class="cart-dropdown" id="cartDropdown">
-            <div class="cart-dropdown-header">
-              <h6 class="mb-0">Warenkorb</h6>
-              <button class="btn-close" id="closeCartDropdown" aria-label="Schließen">&times;</button>
-            </div>
-            <div class="cart-dropdown-body" id="cartDropdownBody">
-              <div class="empty-cart text-center py-4" id="emptyCartMessage">
-                <i class="bi bi-cart-x fs-1 text-muted"></i>
-                <p class="text-muted mt-2">Ihr Warenkorb ist leer</p>
-              </div>
-            </div>
-            <div class="cart-dropdown-footer" id="cartDropdownFooter" style="display: none;">
-              <div class="d-flex justify-content-between align-items-center mb-3">
-                <strong>Gesamt: €<span id="cartTotal">0.00</span></strong>
-              </div>
-              <div class="d-grid gap-2">
-                <a href="cart.html" class="btn btn-primary">Zur Kasse</a>
-                <button class="btn btn-outline-secondary" id="clearCart">Warenkorb leeren</button>
-              </div>
-            </div>
-          </div>
+
         </div>
     </nav>
 
@@ -262,5 +241,29 @@
     cartDropdown.classList.remove('show');
   });
 </script>
+
+<!-- Warenkorb Dropdown - ganz unten -->
+<div class="cart-dropdown" id="cartDropdown">
+  <div class="cart-dropdown-header">
+    <h6 class="mb-0">Warenkorb</h6>
+    <button class="btn-close" id="closeCartDropdown" aria-label="Schließen">&times;</button>
+  </div>
+  <div class="cart-dropdown-body" id="cartDropdownBody">
+    <div class="empty-cart text-center py-4" id="emptyCartMessage">
+      <i class="bi bi-cart-x fs-1 text-muted"></i>
+      <p class="text-muted mt-2">Ihr Warenkorb ist leer</p>
+    </div>
+  </div>
+  <div class="cart-dropdown-footer" id="cartDropdownFooter" style="display: none;">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <strong>Gesamt: €<span id="cartTotal">0.00</span></strong>
+    </div>
+    <div class="d-grid gap-2">
+      <a href="cart.html" class="btn btn-primary">Zur Kasse</a>
+      <button class="btn btn-outline-secondary" id="clearCart">Warenkorb leeren</button>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
