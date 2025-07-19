@@ -398,69 +398,69 @@ body {
 /* Mobile Optimierungen für den Button */
 @media (max-width: 768px) {
   .product-card .btn.add-to-cart {
-    width: auto;
-    padding: 12px 16px;
-    font-size: 0.9rem;
-    min-width: 90px;
+    width: auto !important;
+    padding: 12px 16px !important;
+    font-size: 0.9rem !important;
+    min-width: 90px !important;
   }
   
   .product-card .btn.add-to-cart i {
-    font-size: 1rem;
+    font-size: 1rem !important;
   }
   
   .product-card .btn.add-to-cart .btn-text {
-    font-size: 0.85rem;
+    font-size: 0.85rem !important;
   }
 }
 
 @media (max-width: 600px) {
   .product-card .btn.add-to-cart {
-    width: auto;
-    padding: 10px 14px;
-    font-size: 0.8rem;
-    min-width: 80px;
+    width: auto !important;
+    padding: 10px 14px !important;
+    font-size: 0.8rem !important;
+    min-width: 80px !important;
   }
   
   .product-card .btn.add-to-cart i {
-    font-size: 0.9rem;
+    font-size: 0.9rem !important;
   }
   
   .product-card .btn.add-to-cart .btn-text {
-    font-size: 0.75rem;
+    font-size: 0.75rem !important;
   }
 }
 
 @media (max-width: 414px) {
   .product-card .btn.add-to-cart {
-    width: auto;
-    padding: 8px 12px;
-    font-size: 0.75rem;
-    min-width: 70px;
+    width: auto !important;
+    padding: 8px 12px !important;
+    font-size: 0.75rem !important;
+    min-width: 70px !important;
   }
   
   .product-card .btn.add-to-cart i {
-    font-size: 0.85rem;
+    font-size: 0.85rem !important;
   }
   
   .product-card .btn.add-to-cart .btn-text {
-    font-size: 0.7rem;
+    font-size: 0.7rem !important;
   }
 }
 
 @media (max-width: 375px) {
   .product-card .btn.add-to-cart {
-    width: auto;
-    padding: 6px 10px;
-    font-size: 0.7rem;
-    min-width: 60px;
+    width: auto !important;
+    padding: 6px 10px !important;
+    font-size: 0.7rem !important;
+    min-width: 60px !important;
   }
   
   .product-card .btn.add-to-cart i {
-    font-size: 0.8rem;
+    font-size: 0.8rem !important;
   }
   
   .product-card .btn.add-to-cart .btn-text {
-    font-size: 0.65rem;
+    font-size: 0.65rem !important;
   }
 }
 
