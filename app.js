@@ -427,6 +427,31 @@ document.addEventListener('DOMContentLoaded', () => {
   updateCartCounter();
   initializeCartDropdown();
   
+  // Mobile Suchleiste Toggle
+  const searchForm = document.querySelector('.search-form');
+  const searchBtn = document.querySelector('.search-form .btn');
+  
+  if (searchBtn && window.innerWidth <= 768) {
+    searchBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      searchForm.classList.toggle('expanded');
+      
+      if (searchForm.classList.contains('expanded')) {
+        const searchInput = searchForm.querySelector('.form-control');
+        if (searchInput) {
+          searchInput.focus();
+        }
+      }
+    });
+    
+    // Schließe Suchleiste beim Klick außerhalb
+    document.addEventListener('click', (e) => {
+      if (!searchForm.contains(e.target) && searchForm.classList.contains('expanded')) {
+        searchForm.classList.remove('expanded');
+      }
+    });
+  }
+  
   // Sofortige Platzhalter für fehlende Bilder anwenden
   applyPlaceholdersForMissingImages();
 
