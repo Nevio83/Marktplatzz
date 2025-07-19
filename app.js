@@ -382,27 +382,31 @@ function renderCartDropdown() {
     <div class="cart-item">
       <img src="${item.image}" class="cart-item-image" alt="${item.name}">
       <div class="cart-item-details">
-        <div class="cart-item-name">${item.name}</div>
-        <div class="cart-item-price">
-          €${(typeof item.price === 'number' ? item.price.toFixed(2) : '0.00')} x 
-          <span class="quantity-display">${item.quantity}</span> = 
+        <div class="product-info">
+          <div class="cart-item-name">${item.name}</div>
+        </div>
+        <div class="price-info">
+          <span>€${(typeof item.price === 'number' ? item.price.toFixed(2) : '0.00')}</span>
+          <span>x</span>
+          <span class="quantity-display">${item.quantity}</span>
+          <span>=</span>
           <strong>€${(typeof item.price === 'number' ? (item.price * item.quantity).toFixed(2) : '0.00')}</strong>
         </div>
       </div>
-              <div class="cart-item-controls">
-          ${item.bundleId ? `
-            <div class="quantity-controls disabled">
-              <span class="quantity-display">1</span>
-            </div>
-          ` : `
-            <div class="quantity-controls" style="display: flex; align-items: center; gap: 4px;">
-              <button class="quantity-btn" onclick="changeQuantity(${Number(item.id)}, -1)">-</button>
-              <span class="quantity-display">${item.quantity}</span>
-              <button class="quantity-btn" onclick="changeQuantity(${Number(item.id)}, 1)">+</button>
-            </div>
-          `}
-          <button class="remove-item" onclick="removeFromCart(${Number(item.id)})">&times;</button>
-        </div>
+      <div class="cart-item-controls">
+        ${item.bundleId ? `
+          <div class="quantity-controls disabled">
+            <span class="quantity-display">1</span>
+          </div>
+        ` : `
+          <div class="quantity-controls" style="display: flex; align-items: center; gap: 4px;">
+            <button class="quantity-btn" onclick="changeQuantity(${Number(item.id)}, -1)">-</button>
+            <span class="quantity-display">${item.quantity}</span>
+            <button class="quantity-btn" onclick="changeQuantity(${Number(item.id)}, 1)">+</button>
+          </div>
+        `}
+        <button class="remove-item" onclick="removeFromCart(${Number(item.id)})">&times;</button>
+      </div>
     </div>
   `).join('');
   totalElement.textContent = cartItems
