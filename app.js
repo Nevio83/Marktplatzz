@@ -355,7 +355,7 @@ function renderCartDropdown() {
           
           <!-- Zufällige Produktvorschläge -->
           <div class="mt-3">
-            <h6 class="mb-2"><i class="bi bi-lightbulb"></i> Das könnte Ihnen gefallen</h6>
+            <h6 class="mb-2" style="color: #6c757d; font-weight: 600;"><i class="bi bi-lightbulb" style="color: #ffc107;"></i> Das könnte Ihnen gefallen</h6>
             ${randomProducts.map(product => `
               <div class="cart-item" style="margin-bottom: 0.5rem;">
                 <img src="${product.image}" class="cart-item-image" alt="${product.name}">
@@ -364,7 +364,7 @@ function renderCartDropdown() {
                   <div class="cart-item-price">€${product.price.toFixed(2)}</div>
                 </div>
                 <div class="cart-item-controls">
-                  <button class="quantity-btn" onclick="addToCart(${product.id})" style="background: #28a745; color: white; border: none;">
+                  <button class="quantity-btn" onclick="addToCart(${product.id})" style="background: #007AFF; color: white; border: none; font-weight: 700; box-shadow: 0 2px 8px rgba(0, 122, 255, 0.2);">
                     <i class="bi bi-cart-plus"></i>
                   </button>
                 </div>
@@ -389,20 +389,20 @@ function renderCartDropdown() {
           <strong>€${(typeof item.price === 'number' ? (item.price * item.quantity).toFixed(2) : '0.00')}</strong>
         </div>
       </div>
-      <div class="cart-item-controls">
-        ${item.bundleId ? `
-          <div class="quantity-controls disabled">
-            <span class="quantity-display">1</span>
-          </div>
-        ` : `
-          <div class="quantity-controls">
-            <button class="quantity-btn" onclick="changeQuantity(${Number(item.id)}, -1)">-</button>
-            <span class="quantity-display">${item.quantity}</span>
-            <button class="quantity-btn" onclick="changeQuantity(${Number(item.id)}, 1)">+</button>
-          </div>
-        `}
-        <button class="remove-item" onclick="removeFromCart(${Number(item.id)})">&times;</button>
-      </div>
+              <div class="cart-item-controls">
+          ${item.bundleId ? `
+            <div class="quantity-controls disabled">
+              <span class="quantity-display">1</span>
+            </div>
+          ` : `
+            <div class="quantity-controls" style="display: flex; align-items: center; gap: 4px;">
+              <button class="quantity-btn" onclick="changeQuantity(${Number(item.id)}, -1)">-</button>
+              <span class="quantity-display">${item.quantity}</span>
+              <button class="quantity-btn" onclick="changeQuantity(${Number(item.id)}, 1)">+</button>
+            </div>
+          `}
+          <button class="remove-item" onclick="removeFromCart(${Number(item.id)})">&times;</button>
+        </div>
     </div>
   `).join('');
   totalElement.textContent = cartItems
