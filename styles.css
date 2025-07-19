@@ -185,7 +185,7 @@ body {
   
   #wishlistButton {
     color: var(--text-secondary);
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     background: transparent;
     border: none;
     width: auto;
@@ -470,14 +470,15 @@ body {
     background: var(--primary-gradient);
     border: none;
     border-radius: 50%;
-    width: 44px;
-    height: 44px;
+    width: 48px;
+    height: 48px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
     transition: all 0.3s ease;
     box-shadow: var(--shadow-light);
+    font-size: 1.3rem;
 }
 
 #cartButton:hover {
@@ -634,6 +635,17 @@ body {
         align-items: center;
         gap: 4px;
         flex-wrap: wrap;
+    }
+    
+    /* Desktop: Größere Nav-Icons */
+    #cartButton {
+        width: 52px !important;
+        height: 52px !important;
+        font-size: 1.4rem !important;
+    }
+    
+    #wishlistButton {
+        font-size: 1.8rem !important;
     }
     
     /* Desktop: Warenkorb-Dropdown normale Größe */

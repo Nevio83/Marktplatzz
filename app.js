@@ -500,8 +500,68 @@ document.addEventListener('DOMContentLoaded', () => {
   }, 300);
 
   if (searchInput) searchInput.addEventListener('input', updateFilters);
-  if (categoryFilter) categoryFilter.addEventListener('change', updateFilters);
+  if (categoryFilter) categoryFilter.addEventListener('change', (e) => {
+    // Leere die Suche wenn eine Kategorie gewählt wird
+    if (searchInput) {
+      searchInput.value = '';
+    }
+    updateFilters();
+  });
   if (priceSort) priceSort.addEventListener('change', updateFilters);
+
+  // Kategorie-Klicks auf der Hauptseite
+  document.querySelectorAll('.category-tile').forEach(tile => {
+    tile.addEventListener('click', (e) => {
+      e.preventDefault();
+      const category = tile.getAttribute('data-category');
+      
+      // Setze die Kategorie im Dropdown
+      if (categoryFilter) {
+        categoryFilter.value = category;
+      }
+      
+      // Leere die Suche
+      if (searchInput) {
+        searchInput.value = '';
+      }
+      
+      // Aktualisiere die Filter
+      updateFilters();
+      
+      // Scrolle zu den Produkten
+      const productGrid = document.getElementById('productGrid');
+      if (productGrid) {
+        productGrid.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+
+  // "Alle Produkte entdecken" Button
+  const allProductsBtn = document.querySelector('a[href="#productGrid"]');
+  if (allProductsBtn) {
+    allProductsBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      
+      // Setze "Alle Kategorien" im Dropdown
+      if (categoryFilter) {
+        categoryFilter.value = 'Alle Kategorien';
+      }
+      
+      // Leere die Suche
+      if (searchInput) {
+        searchInput.value = '';
+      }
+      
+      // Aktualisiere die Filter
+      updateFilters();
+      
+      // Scrolle zu den Produkten
+      const productGrid = document.getElementById('productGrid');
+      if (productGrid) {
+        productGrid.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  }
 
   // Initiales Laden und Rendern
   loadProducts().then(products => {
