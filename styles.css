@@ -97,6 +97,7 @@ body {
     display: flex;
     align-items: center;
     gap: 8px;
+    position: relative;
   }
   
   .search-form .form-control {
@@ -104,12 +105,18 @@ body {
     width: 0;
     opacity: 0;
     transition: all 0.3s ease;
+    position: absolute;
+    right: 44px;
+    top: 0;
   }
   
   .search-form.expanded .form-control {
     display: block;
     width: 200px;
     opacity: 1;
+    position: absolute;
+    right: 44px;
+    top: 0;
   }
   
   .search-form .btn {
@@ -125,6 +132,8 @@ body {
     color: white;
     border: none;
     box-shadow: var(--shadow-light);
+    position: relative;
+    z-index: 10;
   }
   
   .search-form .btn:hover {
@@ -857,6 +866,21 @@ footer a:hover {
   transition: all 0.3s ease;
   z-index: 999;
   overflow: hidden;
+}
+
+/* Mobile Hilfe-Panel Position */
+@media (max-width: 768px) {
+  .hilfe-panel {
+    bottom: 80px;
+    right: 20px;
+    width: calc(100vw - 40px);
+    max-width: 320px;
+    transform: translateX(100%);
+  }
+  
+  .hilfe-panel.offen {
+    transform: translateX(0);
+  }
 }
 
 .hilfe-panel.offen {
