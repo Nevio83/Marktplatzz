@@ -107,7 +107,7 @@ body {
     opacity: 0;
     transition: all 0.3s ease;
     position: absolute;
-    right: 44px;
+    right: 60px;
     top: 50px;
     z-index: 5;
     background: var(--card-bg);
@@ -120,10 +120,10 @@ body {
   
   .search-form.expanded .form-control {
     display: block;
-    width: 180px;
+    width: 160px;
     opacity: 1;
     position: absolute;
-    right: 44px;
+    right: 60px;
     top: 50px;
     z-index: 5;
   }
