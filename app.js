@@ -71,7 +71,7 @@ function renderProducts(products) {
         </button>
         <div class="ratio ratio-4x3 product-image-container">
           <img src="${product.image}" class="card-img-top object-fit-cover" alt="${product.name}" 
-               style="opacity: 0.8; transform: scale(0.98); transition: opacity 0.3s ease, transform 0.3s ease, filter 0.3s ease; image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges; filter: brightness(1.02) contrast(1.05) saturate(1.08);">
+               style="opacity: 0.8; transform: scale(0.98); transition: opacity 0.3s ease, transform 0.3s ease, filter 0.3s ease; image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges; filter: brightness(1.02) contrast(1.05) saturate(1.1);">
         </div>
         <div class="card-body">
           <h5 class="card-title">${product.name}</h5>
@@ -85,7 +85,7 @@ function renderProducts(products) {
                     data-product-id="${product.id}"
                     data-name="${product.name}"
                     data-price="${product.price}">
-              <i class="bi bi-cart-plus me-2"></i>Hinzufügen
+              <i class="bi bi-cart-plus me-2"></i><span class="btn-text">Hinzufügen</span>
             </button>
           </div>
         </div>
@@ -491,34 +491,36 @@ function optimizeImages() {
         // Entferne das alte src-Attribut
         this.removeAttribute('src');
         
-        // Setze den Platzhalter-Hintergrund
-        this.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+        // Setze den Platzhalter-Hintergrund - Einheitlich wie auf PC
+        this.style.background = '#f8fafc';
         this.style.display = 'flex';
         this.style.alignItems = 'center';
         this.style.justifyContent = 'center';
-        this.style.color = 'rgba(255,255,255,0.9)';
-        this.style.fontSize = '1.5rem';
-        this.style.fontWeight = '600';
-        this.style.borderRadius = '8px';
-        this.style.boxShadow = '0 2px 8px rgba(102,126,234,0.15)';
+        this.style.color = '#2c3e50';
+        this.style.fontSize = '4rem';
+        this.style.fontWeight = '700';
+        this.style.borderRadius = '16px 16px 0 0';
+        this.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
         this.style.position = 'relative';
         this.style.overflow = 'hidden';
+        this.style.objectFit = 'contain';
+        this.style.padding = '20px';
         
-        // Füge das 📦-Symbol hinzu
-        this.innerHTML = '📦';
+        // Füge das große Fragezeichen-Symbol hinzu (wie auf PC)
+        this.innerHTML = '?';
         
-        // Mobile Anpassungen für Platzhalter
+        // Mobile Anpassungen für Platzhalter - aber einheitlich
+        if (window.innerWidth <= 768) {
+          this.style.fontSize = '3rem';
+        }
         if (window.innerWidth <= 600) {
-          this.style.fontSize = '0.8rem';
-          this.style.borderRadius = '4px';
+          this.style.fontSize = '2.5rem';
         }
         if (window.innerWidth <= 414) {
-          this.style.fontSize = '0.7rem';
-          this.style.borderRadius = '3px';
+          this.style.fontSize = '2rem';
         }
         if (window.innerWidth <= 375) {
-          this.style.fontSize = '0.6rem';
-          this.style.borderRadius = '2px';
+          this.style.fontSize = '1.8rem';
         }
       }
     });
@@ -541,6 +543,8 @@ function optimizeImages() {
       this.style.boxShadow = '';
       this.style.position = '';
       this.style.overflow = '';
+      this.style.objectFit = '';
+      this.style.padding = '';
       this.innerHTML = '';
     });
     
@@ -579,34 +583,36 @@ function applyPlaceholdersForMissingImages() {
           // Entferne das alte src-Attribut
           img.removeAttribute('src');
           
-          // Setze den Platzhalter-Hintergrund
-          img.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+          // Setze den Platzhalter-Hintergrund - Einheitlich wie auf PC
+          img.style.background = '#f8fafc';
           img.style.display = 'flex';
           img.style.alignItems = 'center';
           img.style.justifyContent = 'center';
-          img.style.color = 'rgba(255,255,255,0.9)';
-          img.style.fontSize = '1.5rem';
-          img.style.fontWeight = '600';
-          img.style.borderRadius = '8px';
-          img.style.boxShadow = '0 2px 8px rgba(102,126,234,0.15)';
+          img.style.color = '#2c3e50';
+          img.style.fontSize = '4rem';
+          img.style.fontWeight = '700';
+          img.style.borderRadius = '16px 16px 0 0';
+          img.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
           img.style.position = 'relative';
           img.style.overflow = 'hidden';
+          img.style.objectFit = 'contain';
+          img.style.padding = '20px';
           
-          // Füge das 📦-Symbol hinzu
-          img.innerHTML = '📦';
+          // Füge das große Fragezeichen-Symbol hinzu (wie auf PC)
+          img.innerHTML = '?';
           
-          // Mobile Anpassungen für Platzhalter
+          // Mobile Anpassungen für Platzhalter - aber einheitlich
+          if (window.innerWidth <= 768) {
+            img.style.fontSize = '3rem';
+          }
           if (window.innerWidth <= 600) {
-            img.style.fontSize = '0.8rem';
-            img.style.borderRadius = '4px';
+            img.style.fontSize = '2.5rem';
           }
           if (window.innerWidth <= 414) {
-            img.style.fontSize = '0.7rem';
-            img.style.borderRadius = '3px';
+            img.style.fontSize = '2rem';
           }
           if (window.innerWidth <= 375) {
-            img.style.fontSize = '0.6rem';
-            img.style.borderRadius = '2px';
+            img.style.fontSize = '1.8rem';
           }
         }
       }, 200);
