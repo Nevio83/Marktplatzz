@@ -434,9 +434,18 @@ document.addEventListener('DOMContentLoaded', () => {
   if (searchBtn && window.innerWidth <= 768) {
     searchBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      searchForm.classList.toggle('expanded');
+      e.stopPropagation(); // Verhindert Form-Submit
       
       if (searchForm.classList.contains('expanded')) {
+        // Wenn bereits geöffnet, dann suchen
+        const searchInput = searchForm.querySelector('.form-control');
+        if (searchInput && searchInput.value.trim()) {
+          // Führe Suche aus
+          updateFilters();
+        }
+      } else {
+        // Öffne Suchfeld
+        searchForm.classList.add('expanded');
         const searchInput = searchForm.querySelector('.form-control');
         if (searchInput) {
           searchInput.focus();
@@ -450,6 +459,18 @@ document.addEventListener('DOMContentLoaded', () => {
         searchForm.classList.remove('expanded');
       }
     });
+    
+    // Enter-Taste im Suchfeld
+    const searchInput = searchForm.querySelector('.form-control');
+    if (searchInput) {
+      searchInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          updateFilters();
+          searchForm.classList.remove('expanded');
+        }
+      });
+    }
   }
   
   // Sofortige Platzhalter für fehlende Bilder anwenden
