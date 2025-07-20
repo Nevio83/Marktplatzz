@@ -1152,4 +1152,59 @@ footer a:hover {
     }
 }
 
+/* Noch größere Mengen- und Entfernen-Buttons im Produktbereich (Startseite) */
+.product-card .quantity-btn, .product-card .remove-item {
+  width: 56px !important;
+  height: 56px !important;
+  min-width: 56px !important;
+  min-height: 56px !important;
+  font-size: 2rem !important;
+  border-radius: 50% !important;
+  margin: 0 0.5rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.product-card .remove-item {
+  color: #ff4d4f !important;
+  background: #fff !important;
+  border: 2px solid #ffb3b3 !important;
+  font-size: 2.2rem !important;
+  margin-left: 0.7rem !important;
+  transition: background 0.2s, color 0.2s;
+}
+.product-card .remove-item:hover {
+  background: #ffb3b3 !important;
+  color: #fff !important;
+}
+
+/* Extra große + und - Buttons im Produktbereich (Startseite) */
+.product-card .quantity-btn {
+  width: 68px !important;
+  height: 68px !important;
+  min-width: 68px !important;
+  min-height: 68px !important;
+  font-size: 2.5rem !important;
+  border-radius: 50% !important;
+  margin: 0 0.7rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Noch größere + und - Buttons im Produktbereich (Startseite) */
+.product-card .quantity-btn {
+  width: 90px !important;
+  height: 90px !important;
+  min-width: 90px !important;
+  min-height: 90px !important;
+  font-size: 3.2rem !important;
+  border-radius: 50% !important;
+  margin: 0 1rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+}
+
 /* ===== ENDE DER MODERNEN MOBILE DESIGN OPTIMIERUNGEN ===== */

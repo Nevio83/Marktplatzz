@@ -59,6 +59,13 @@
           </div>
         </div>
     </nav>
+<style>
+/* Nur die Breite der Suchleiste anpassen, sonst Bootstrap-Standard lassen */
+.search-form .input-group {
+  width: 320px;
+  max-width: 100%;
+}
+</style>
 
     <!-- Main Content -->
     <main>
@@ -261,6 +268,28 @@
     // Entfernt die 'show'-Klasse, um das Dropdown zu schließen.
     cartDropdown.classList.remove('show');
   });
+</script>
+<script>
+// Suchfeld leeren, wenn auf eine Kategorie oder 'Alle Produkte entdecken' geklickt wird
+function clearSearchInput() {
+  var searchInput = document.getElementById('searchInput');
+  if (searchInput) searchInput.value = '';
+}
+document.addEventListener('DOMContentLoaded', function() {
+  // Kategorie-Kacheln
+  document.querySelectorAll('.category-tile').forEach(tile => {
+    tile.addEventListener('click', function() {
+      clearSearchInput();
+    });
+  });
+  // 'Alle Produkte entdecken'-Button
+  var allBtn = document.querySelector('a.btn.btn-outline-dark');
+  if (allBtn) {
+    allBtn.addEventListener('click', function() {
+      clearSearchInput();
+    });
+  }
+});
 </script>
 </body>
 </html>

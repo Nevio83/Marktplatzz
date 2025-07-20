@@ -1443,3 +1443,170 @@ html, body {
         max-width: 60px;
     }
 }
+
+@media (max-width: 600px) {
+  #cartDropdown .empty-cart {
+    padding: 2.2rem 1rem 1.2rem 1rem;
+    margin: 2rem 0 1rem 0;
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 2px 8px rgba(102,126,234,0.10);
+    text-align: center;
+  }
+  #cartDropdown .empty-cart h6 {
+    font-size: 1.08rem;
+    font-weight: 700;
+    color: #5a5a5a;
+    margin-bottom: 1.1rem;
+    margin-top: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: center;
+  }
+  #cartDropdown .empty-cart .cart-item {
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+    background: #f8f9fa;
+    border-radius: 16px;
+    box-shadow: 0 1px 4px rgba(102,126,234,0.06);
+    margin-bottom: 1.1rem;
+    padding: 1.1rem 0.7rem 1.1rem 0.7rem;
+    border: none;
+    border-bottom: 1px solid #ececec;
+    position: relative;
+  }
+  #cartDropdown .empty-cart .cart-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0.2rem;
+  }
+  #cartDropdown .empty-cart .cart-item-image {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #f3f6fa;
+    box-shadow: 0 2px 8px rgba(102,126,234,0.10);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: #222;
+    font-weight: 700;
+  }
+  #cartDropdown .empty-cart .cart-item-details {
+    flex: 1 1 auto;
+    min-width: 0;
+    text-align: left;
+  }
+  #cartDropdown .empty-cart .cart-item-name {
+    font-size: 1.08rem;
+    font-weight: 600;
+    color: #222;
+    margin-bottom: 0.2rem;
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  #cartDropdown .empty-cart .cart-item-price {
+    font-size: 1.08rem;
+    color: #667eea;
+    font-weight: 700;
+    margin-bottom: 0.1rem;
+  }
+  #cartDropdown .empty-cart .cart-item-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 0.5rem;
+  }
+  #cartDropdown .empty-cart .quantity-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg,#007AFF,#667eea);
+    color: #fff;
+    border: none;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0,122,255,0.18);
+    transition: background 0.2s, transform 0.2s;
+    margin: 0;
+    padding: 0;
+  }
+  #cartDropdown .empty-cart .quantity-btn:hover {
+    background: linear-gradient(135deg,#667eea,#007AFF);
+    transform: scale(1.10);
+  }
+}
+
+/* Größere Mengen- und Entfernen-Buttons im Warenkorb */
+.cart-item .quantity-btn, .cart-item .remove-item {
+  width: 44px !important;
+  height: 44px !important;
+  min-width: 44px !important;
+  min-height: 44px !important;
+  font-size: 1.5rem !important;
+  border-radius: 50% !important;
+  margin: 0 0.3rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.cart-item .remove-item {
+  color: #ff4d4f !important;
+  background: #fff !important;
+  border: 1.5px solid #ffb3b3 !important;
+  font-size: 1.7rem !important;
+  margin-left: 0.5rem !important;
+  transition: background 0.2s, color 0.2s;
+}
+.cart-item .remove-item:hover {
+  background: #ffb3b3 !important;
+  color: #fff !important;
+}
+
+/* Extra große + und - Buttons im Warenkorb (cart-dropdown) */
+#cartDropdown .quantity-btn {
+  width: 90px !important;
+  height: 90px !important;
+  min-width: 90px !important;
+  min-height: 90px !important;
+  font-size: 3.2rem !important;
+  border-radius: 50% !important;
+  margin: 0 1rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+}
+
+/* Extra große +, - und x Buttons im Warenkorb (cart-dropdown) */
+#cartDropdown .quantity-btn, #cartDropdown .remove-item {
+  width: 100px !important;
+  height: 100px !important;
+  min-width: 100px !important;
+  min-height: 100px !important;
+  font-size: 3.5rem !important;
+  border-radius: 50% !important;
+  margin: 0 1.2rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+}
+#cartDropdown .remove-item {
+  color: #ff4d4f !important;
+  background: #fff !important;
+  border: 2.5px solid #ffb3b3 !important;
+  font-size: 3.5rem !important;
+  margin-left: 1.5rem !important;
+  transition: background 0.2s, color 0.2s;
+}
+#cartDropdown .remove-item:hover {
+  background: #ffb3b3 !important;
+  color: #fff !important;
+}
