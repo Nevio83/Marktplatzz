@@ -59,8 +59,16 @@
     border-color: #eee;
     position: relative;
     background: #f6fafd;
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
 }
 .bundle-card.selected {
+    border-color: #2980b9;
+    background: #fff;
+    box-shadow: 0 4px 18px #2980b933;
+}
+.bundle-card:hover {
     border-color: #2980b9;
     background: #fff;
     box-shadow: 0 4px 18px #2980b933;
@@ -74,6 +82,8 @@
     border: 2.5px solid #2980b9;
     background: #fff;
     margin-right: 0.5rem;
+    cursor: pointer;
+    pointer-events: none;
 }
 .bundle-radio:checked {
     box-shadow: 0 0 0 4px #2980b933;

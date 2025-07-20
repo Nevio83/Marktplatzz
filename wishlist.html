@@ -33,9 +33,12 @@
         </a>
       </div>
     </div>
-    <div class="d-flex justify-content-center mt-4" id="addAllContainer" style="display: none;">
+    <div class="d-flex justify-content-center mt-4 gap-3" id="addAllContainer" style="display: none;">
       <button id="addAllToCart" class="btn btn-primary btn-lg">
         <i class="bi bi-cart-plus me-2"></i>Alle zum Warenkorb
+      </button>
+      <button id="removeAllFromWishlist" class="btn btn-outline-danger btn-lg">
+        <i class="bi bi-trash me-2"></i>Alle entfernen
       </button>
     </div>
   </main>
@@ -277,6 +280,24 @@
           }, 1500);
         });
       }
+
+      // Event-Listener für "Alle entfernen" Button
+      const removeAllBtn = document.getElementById('removeAllFromWishlist');
+      if (removeAllBtn) {
+        removeAllBtn.addEventListener('click', function() {
+          const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+          if (wishlist.length === 0) return;
+          
+          // Wunschliste leeren
+          localStorage.setItem('wishlist', JSON.stringify([]));
+          
+          showNotification('Alle Produkte wurden von der Wunschliste entfernt', 'info');
+          
+          // Wunschliste sofort neu rendern
+          renderWishlist();
+        });
+      }
+
       // Wunschliste bei Storage-Änderung neu rendern (z.B. bei mehreren Tabs)
       window.addEventListener('storage', function(e) {
         if (e.key === 'wishlist') renderWishlist();

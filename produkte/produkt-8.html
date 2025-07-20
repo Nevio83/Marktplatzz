@@ -250,14 +250,36 @@
         </form>
       </div>
     `;
+    // Interaktive Auswahl
     const cards = section.querySelectorAll('.bundle-card');
     const radios = section.querySelectorAll('.bundle-radio');
+    
+    // Event-Listener für Radio-Buttons
     radios.forEach((radio, i) => {
       radio.addEventListener('change', () => {
         cards.forEach(c => c.classList.remove('selected'));
         cards[i].classList.add('selected');
       });
     });
+
+    // Event-Listener für Bundle-Cards
+    cards.forEach((card, i) => {
+      card.addEventListener('click', (e) => {
+        // Verhindere Bubbling wenn auf Radio geklickt wurde
+        if (e.target === radios[i]) return;
+        
+        // Wähle Radio-Button aus
+        radios[i].checked = true;
+        
+        // Aktualisiere Selected-Status
+        cards.forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+        
+        // Trigger change Event auf Radio
+        radios[i].dispatchEvent(new Event('change'));
+      });
+    });
+
     section.querySelector('#bundleForm').addEventListener('submit', function(e) {
       e.preventDefault();
       const idx = Array.from(radios).findIndex(r => r.checked);
