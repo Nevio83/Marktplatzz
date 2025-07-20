@@ -285,6 +285,7 @@ body {
     text-decoration: none;
     color: var(--text-primary);
     font-size: 1.4rem;
+    margin: 4px;
 }
 
 .nav-icon-link:hover {
@@ -851,14 +852,14 @@ footer a:hover {
     
     /* Touch-optimierte Hinzufügen-Buttons für Mobile */
     .product-card .btn.add-to-cart {
-        padding: 8px 12px;
-        font-size: 0.9rem;
-        min-height: 40px;
-        min-width: 100px;
+        padding: 6px 10px;
+        font-size: 0.8rem;
+        min-height: 36px;
+        min-width: 80px;
     }
     
     .product-card .btn.add-to-cart i {
-        font-size: 1rem;
+        font-size: 0.9rem;
     }
     
     .container {
@@ -944,14 +945,14 @@ footer a:hover {
     
     /* Kleinere Touch-optimierte Hinzufügen-Buttons für kleine Mobile */
     .product-card .btn.add-to-cart {
-        padding: 6px 10px;
-        font-size: 0.8rem;
-        min-height: 36px;
-        min-width: 80px;
+        padding: 4px 8px;
+        font-size: 0.7rem;
+        min-height: 32px;
+        min-width: 70px;
     }
     
     .product-card .btn.add-to-cart i {
-        font-size: 0.9rem;
+        font-size: 0.8rem;
     }
     
     .container {
@@ -1078,14 +1079,14 @@ footer a:hover {
     
     /* Kleine Touch-optimierte Hinzufügen-Buttons für sehr kleine Mobile */
     .product-card .btn.add-to-cart {
-        padding: 4px 8px;
-        font-size: 0.75rem;
-        min-height: 32px;
-        min-width: 70px;
+        padding: 3px 6px;
+        font-size: 0.65rem;
+        min-height: 28px;
+        min-width: 60px;
     }
     
     .product-card .btn.add-to-cart i {
-        font-size: 0.8rem;
+        font-size: 0.7rem;
     }
     
     .my-5 {
@@ -1178,14 +1179,14 @@ footer a:hover {
     
     /* Minimale Touch-optimierte Hinzufügen-Buttons für sehr kleine Mobile */
     .product-card .btn.add-to-cart {
-        padding: 3px 6px;
-        font-size: 0.7rem;
-        min-height: 28px;
-        min-width: 60px;
+        padding: 2px 4px;
+        font-size: 0.6rem;
+        min-height: 24px;
+        min-width: 50px;
     }
     
     .product-card .btn.add-to-cart i {
-        font-size: 0.75rem;
+        font-size: 0.65rem;
     }
     
     .my-5 {
