@@ -634,7 +634,7 @@ footer a:hover {
 #hilfeButton {
   position: fixed;
   bottom: 30px;
-  right: 100px;
+  right: 20px;
   width: 56px;
   height: 56px;
   background: #007AFF;
@@ -1181,6 +1181,18 @@ footer a:hover {
         background: var(--card-bg);
         display: flex;
         flex-direction: column;
+    }
+    
+    /* Verstecke Hilfe- und Nach-oben-Knöpfe wenn Warenkorb offen ist */
+    .cart-dropdown.show ~ #hilfeButton,
+    .cart-dropdown.show ~ #scrollToTopBtn {
+        display: none !important;
+    }
+    
+    /* Verstecke auch direkt wenn Warenkorb offen ist */
+    .cart-dropdown.show + #hilfeButton,
+    .cart-dropdown.show + #scrollToTopBtn {
+        display: none !important;
     }
     
     .cart-dropdown-header {

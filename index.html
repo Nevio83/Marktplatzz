@@ -318,10 +318,25 @@ if (searchInput && mobileSearchBtn) {
   // Funktionalität für den Schließen-Knopf (X) im Warenkorb-Dropdown
   const closeCartDropdownButton = document.getElementById('closeCartDropdown');
   const cartDropdown = document.getElementById('cartDropdown');
+  const hilfeBtnCart = document.getElementById('hilfeButton');
+  const scrollBtnCart = document.getElementById('scrollToTopBtn');
 
   closeCartDropdownButton.addEventListener('click', () => {
     // Entfernt die 'show'-Klasse, um das Dropdown zu schließen.
     cartDropdown.classList.remove('show');
+    // Zeige die Knöpfe wieder an
+    if (hilfeBtnCart) hilfeBtnCart.style.display = 'flex';
+    if (scrollBtnCart) scrollBtnCart.style.display = 'flex';
+  });
+  
+  // Verstecke Knöpfe wenn Warenkorb geöffnet wird
+  document.getElementById('cartButton').addEventListener('click', () => {
+    setTimeout(() => {
+      if (cartDropdown.classList.contains('show')) {
+        if (hilfeBtnCart) hilfeBtnCart.style.display = 'none';
+        if (scrollBtnCart) scrollBtnCart.style.display = 'none';
+      }
+    }, 100);
   });
 </script>
 <script>
