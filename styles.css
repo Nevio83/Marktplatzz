@@ -1245,7 +1245,7 @@ footer a:hover {
         display: flex;
         flex-direction: column;
         overflow: hidden;
-        padding-top: 20px !important;
+        padding-top: 0 !important;
     }
     
     /* Verstecke alle Knöpfe wenn Warenkorb offen ist */
