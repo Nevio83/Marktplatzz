@@ -16,28 +16,51 @@
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-light bg-light shadow-sm">
-      <div class="container-fluid nav-flex">
-        <a class="navbar-brand fw-bold mb-0 h1" href="#">Marktplatz</a>
-        <form class="search-form mx-auto">
-          <div class="input-group">
-            <input type="search" id="searchInput" class="form-control rounded-pill" placeholder="Suche...">
-            <button class="btn btn-primary rounded-pill px-3" type="submit" aria-label="Suchen">
-              <i class="bi bi-search"></i>
-            </button>
-          </div>
-        </form>
-        <div class="nav-icons d-flex align-items-center gap-3">
-          <a href="wishlist.html" id="wishlistButton" class="nav-icon-link">
-            <i class="bi bi-heart" id="heartIcon"></i>
-          </a>
-          <a href="#" id="cartButton" class="nav-icon-link position-relative">
-            <i class="bi bi-cart3"></i>
-            <span id="cartCounter">0</span>
-          </a>
-
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">
+                <i class="bi bi-shop"></i> Marktplatz
+            </a>
+            <div class="nav-icons d-flex align-items-center gap-3">
+                <a href="wishlist.html" class="nav-icon-link" id="wishlistLink">
+                    <i class="bi bi-heart" id="heartIcon"></i>
+                </a>
+                <button id="cartButton" type="button" class="nav-icon-link border-0 bg-transparent">
+                    <i class="bi bi-cart3"></i>
+                    <span id="cartCounter" class="cart-counter" style="display: none;">0</span>
+                </button>
+            </div>
         </div>
     </nav>
+
+    <!-- Warenkorb Overlay -->
+    <div id="cartOverlay" class="cart-overlay"></div>
+
+    <!-- Warenkorb Dropdown -->
+    <div id="cartDropdown" class="cart-dropdown">
+        <div class="cart-dropdown-header">
+            <h6 class="mb-0">Warenkorb</h6>
+            <button type="button" class="btn-close" id="closeCartButton" aria-label="Schließen">
+                <i class="bi bi-x-lg"></i>
+            </button>
+        </div>
+        <div class="cart-dropdown-body">
+            <!-- Wird per JavaScript gefüllt -->
+            <div class="empty-cart text-center py-4">
+                <i class="bi bi-cart-x fs-1 text-muted"></i>
+                <p class="text-muted mt-2">Ihr Warenkorb ist leer</p>
+            </div>
+        </div>
+        <div class="cart-dropdown-footer">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <strong>Gesamt: €<span id="cartTotal">0.00</span></strong>
+            </div>
+            <div class="d-grid gap-2">
+                <a href="cart.html" class="btn btn-primary">Zur Kasse</a>
+                <button class="btn btn-outline-danger" id="clearCart">Warenkorb leeren</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Main Content -->
     <main>
@@ -100,40 +123,167 @@
 </main>
 
     <!-- Footer -->
-    <footer class="bg-dark text-white mt-5 pt-5 border-top">
-        <div class="container">
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <h5 class="mb-3">Über uns</h5>
-                    <p class="text-muted">Ihr vertrauenswürdiger Online-Marktplatz seit 2024.</p>
-                    <div class="social-icons">
-                        <a href="#" class="text-white me-3" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-                        <a href="#" class="text-white me-3" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-                        <a href="#" class="text-white" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <h5 class="mb-3">Einkaufen</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="#" class="text-white text-decoration-none">Angebote</a></li>
-                        <li><a href="#" class="text-white text-decoration-none">Neue Produkte</a></li>
-                        <li><a href="#" class="text-white text-decoration-none">Kategorien</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-2">
-                    <h5 class="mb-3">Support</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="kontakt.html" class="text-white text-decoration-none">Kontakt</a></li>
-                        <li><a href="versand.html" class="text-white text-decoration-none">Versand</a></li>
-                        <li><a href="retouren.html" class="text-white text-decoration-none">Retouren</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="text-center py-4 text-muted">
-                © 2024 Marktplatz - Alle Rechte vorbehalten
-            </div>
+    <footer class="bg-dark text-white py-4">
+        <div class="container text-center">
+            <p>&copy; 2024 Marktplatz - Alle Rechte vorbehalten</p>
         </div>
     </footer>
+
+    <script>
+        // Warenkorb-Funktionalität
+        document.addEventListener('DOMContentLoaded', function() {
+            const cartButton = document.getElementById('cartButton');
+            const cartDropdown = document.getElementById('cartDropdown');
+            const cartOverlay = document.getElementById('cartOverlay');
+            const closeButton = document.getElementById('closeCartButton');
+            
+            // Globale Funktion für Schließen
+            window.closeCart = function() {
+                cartDropdown.classList.remove('show');
+                cartOverlay.style.display = 'none';
+                document.body.style.overflow = '';
+            };
+            
+            // Warenkorb öffnen/schließen
+            function toggleCart() {
+                cartDropdown.style.display = 'flex'; // Zuerst anzeigen
+                setTimeout(() => { // Dann Animation starten
+                    cartDropdown.classList.toggle('show');
+                    cartOverlay.style.display = cartDropdown.classList.contains('show') ? 'block' : 'none';
+                    document.body.style.overflow = cartDropdown.classList.contains('show') ? 'hidden' : '';
+                    
+                    if (cartDropdown.classList.contains('show')) {
+                        updateCartContent();
+                    }
+                }, 10);
+            }
+            
+            // Event Listener für den Warenkorb-Button
+            cartButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                toggleCart();
+            });
+            
+            // Event Listener für den Schließen-Button
+            closeButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                closeCart();
+            });
+            
+            // Schließen bei Escape-Taste
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && cartDropdown.classList.contains('show')) {
+                    closeCart();
+                }
+            });
+            
+            // Schließen bei Klick außerhalb
+            cartOverlay.addEventListener('click', function(e) {
+                if (cartDropdown.classList.contains('show')) {
+                    closeCart();
+                }
+            });
+            
+            // Verhindern, dass Klicks innerhalb des Dropdowns es schließen
+            cartDropdown.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+            
+            // Warenkorb-Inhalt aktualisieren
+            function updateCartContent() {
+                const cartBody = cartDropdown.querySelector('.cart-dropdown-body');
+                const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                const cartFooter = document.querySelector('.cart-dropdown-footer');
+                
+                if (cart.length === 0) {
+                    cartBody.innerHTML = `
+                        <div class="empty-cart text-center py-4">
+                            <i class="bi bi-cart-x fs-1 text-muted"></i>
+                            <p class="text-muted mt-2">Ihr Warenkorb ist leer</p>
+                        </div>
+                    `;
+                    cartFooter.style.display = 'none';
+                } else {
+                    cartBody.innerHTML = cart.map(item => `
+                        <div class="cart-item">
+                            <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                            <div class="cart-item-details">
+                                <div class="cart-item-name">${item.name}</div>
+                                <div class="cart-item-price">€${item.price.toFixed(2)}</div>
+                            </div>
+                            <div class="cart-item-controls">
+                                <button class="quantity-btn" onclick="updateQuantity(${item.id}, -1)">-</button>
+                                <span class="quantity-display">${item.quantity}</span>
+                                <button class="quantity-btn" onclick="updateQuantity(${item.id}, 1)">+</button>
+                                <button class="remove-item" onclick="removeFromCart(${item.id})">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    `).join('');
+                    cartFooter.style.display = 'block';
+                    
+                    // Gesamtsumme berechnen und anzeigen
+                    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                    document.getElementById('cartTotal').textContent = total.toFixed(2);
+                }
+                
+                updateCartCounter();
+            }
+            
+            // Counter aktualisieren
+            function updateCartCounter() {
+                const counter = document.getElementById('cartCounter');
+                const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                const total = cart.reduce((sum, item) => sum + item.quantity, 0);
+                
+                counter.style.display = total > 0 ? 'flex' : 'none';
+                counter.textContent = total;
+            }
+            
+            // Warenkorb leeren
+            document.getElementById('clearCart').addEventListener('click', function() {
+                localStorage.setItem('cart', '[]');
+                updateCartContent();
+            });
+            
+            // Initial Counter aktualisieren
+            updateCartCounter();
+            
+            // Bei Storage-Änderungen aktualisieren
+            window.addEventListener('storage', function(e) {
+                if (e.key === 'cart') {
+                    updateCartCounter();
+                    if (cartDropdown.classList.contains('show')) {
+                        updateCartContent();
+                    }
+                }
+            });
+        });
+        
+        // Globale Funktionen für Cart-Operationen
+        function updateQuantity(productId, change) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const item = cart.find(item => Number(item.id) === Number(productId));
+            
+            if (item) {
+                item.quantity = Math.max(0, item.quantity + change);
+                if (item.quantity === 0) {
+                    cart = cart.filter(item => Number(item.id) !== Number(productId));
+                }
+                localStorage.setItem('cart', JSON.stringify(cart));
+                document.dispatchEvent(new Event('storage'));
+            }
+        }
+        
+        function removeFromCart(productId) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart = cart.filter(item => Number(item.id) !== Number(productId));
+            localStorage.setItem('cart', JSON.stringify(cart));
+            document.dispatchEvent(new Event('storage'));
+        }
+    </script>
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="app.js"></script>
@@ -219,51 +369,22 @@
   });
 </script>
 <script>
-  // Herz-Icon bei Hover füllen
-  const heartIcon = document.getElementById('heartIcon');
-  const wishlistButton = document.getElementById('wishlistButton');
-  wishlistButton.addEventListener('mouseenter', () => {
-    heartIcon.classList.remove('bi-heart');
-    heartIcon.classList.add('bi-heart-fill');
-  });
-  wishlistButton.addEventListener('mouseleave', () => {
-    heartIcon.classList.remove('bi-heart-fill');
-    heartIcon.classList.add('bi-heart');
-  });
+    // Herz-Icon Hover Effekt
+    document.addEventListener('DOMContentLoaded', function() {
+        const wishlistLink = document.getElementById('wishlistLink');
+        const heartIcon = document.getElementById('heartIcon');
+        
+        wishlistLink.addEventListener('mouseenter', () => {
+            heartIcon.classList.remove('bi-heart');
+            heartIcon.classList.add('bi-heart-fill');
+        });
+        
+        wishlistLink.addEventListener('mouseleave', () => {
+            heartIcon.classList.remove('bi-heart-fill');
+            heartIcon.classList.add('bi-heart');
+        });
+    });
 </script>
-<script>
-  // Funktionalität für den Schließen-Knopf (X) im Warenkorb-Dropdown
-  const closeCartDropdownButton = document.getElementById('closeCartDropdown');
-  const cartDropdown = document.getElementById('cartDropdown');
-
-  closeCartDropdownButton.addEventListener('click', () => {
-    // Entfernt die 'show'-Klasse, um das Dropdown zu schließen.
-    cartDropdown.classList.remove('show');
-  });
-</script>
-
-<!-- Warenkorb Dropdown - ganz unten -->
-<div class="cart-dropdown" id="cartDropdown">
-  <div class="cart-dropdown-header">
-    <h6 class="mb-0">Warenkorb</h6>
-    <button class="btn-close" id="closeCartDropdown" aria-label="Schließen">&times;</button>
-  </div>
-  <div class="cart-dropdown-body" id="cartDropdownBody">
-    <div class="empty-cart text-center py-4" id="emptyCartMessage">
-      <i class="bi bi-cart-x fs-1 text-muted"></i>
-      <p class="text-muted mt-2">Ihr Warenkorb ist leer</p>
-    </div>
-  </div>
-  <div class="cart-dropdown-footer" id="cartDropdownFooter" style="display: none;">
-    <div class="d-flex justify-content-between align-items-center mb-3">
-      <strong>Gesamt: €<span id="cartTotal">0.00</span></strong>
-    </div>
-    <div class="d-grid gap-2">
-      <a href="cart.html" class="btn btn-primary">Zur Kasse</a>
-      <button class="btn btn-outline-secondary" id="clearCart">Warenkorb leeren</button>
-    </div>
-  </div>
-</div>
 
 </body>
 </html>

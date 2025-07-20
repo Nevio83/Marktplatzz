@@ -590,6 +590,46 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
+// Warenkorb-Funktionalität
+document.addEventListener('DOMContentLoaded', function() {
+    const cartButton = document.getElementById('cartButton');
+    const cartDropdown = document.querySelector('.cart-dropdown');
+    
+    if (cartButton && cartDropdown) {
+        cartButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            cartDropdown.classList.toggle('show');
+            document.body.classList.toggle('cart-open');
+            
+            // Schließen wenn außerhalb geklickt wird
+            if (cartDropdown.classList.contains('show')) {
+                document.addEventListener('click', closeCartOnClickOutside);
+            } else {
+                document.removeEventListener('click', closeCartOnClickOutside);
+            }
+        });
+    }
+    
+    function closeCartOnClickOutside(e) {
+        if (!cartDropdown.contains(e.target) && e.target !== cartButton) {
+            cartDropdown.classList.remove('show');
+            document.body.classList.remove('cart-open');
+            document.removeEventListener('click', closeCartOnClickOutside);
+        }
+    }
+    
+    // Schließen mit Escape-Taste
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && cartDropdown.classList.contains('show')) {
+            cartDropdown.classList.remove('show');
+            document.body.classList.remove('cart-open');
+            document.removeEventListener('click', closeCartOnClickOutside);
+        }
+    });
+});
+
 // Bilder optimieren
 function optimizeImages() {
   const images = document.querySelectorAll('img');
