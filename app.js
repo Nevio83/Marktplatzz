@@ -382,31 +382,27 @@ function renderCartDropdown() {
     <div class="cart-item">
       <img src="${item.image}" class="cart-item-image" alt="${item.name}">
       <div class="cart-item-details">
-        <div class="product-info">
         <div class="cart-item-name">${item.name}</div>
-        </div>
-        <div class="price-info">
-          <span>€${(typeof item.price === 'number' ? item.price.toFixed(2) : '0.00')}</span>
-          <span>x</span>
-          <span class="quantity-display">${item.quantity}</span>
-          <span>=</span>
+        <div class="cart-item-price">
+          €${(typeof item.price === 'number' ? item.price.toFixed(2) : '0.00')} x 
+          <span class="quantity-display">${item.quantity}</span> = 
           <strong>€${(typeof item.price === 'number' ? (item.price * item.quantity).toFixed(2) : '0.00')}</strong>
         </div>
       </div>
-      <div class="cart-item-controls">
-        ${item.bundleId ? `
-          <div class="quantity-controls disabled">
-            <span class="quantity-display">1</span>
-          </div>
-        ` : `
-          <div class="quantity-controls" style="display: flex; align-items: center; gap: 4px;">
-            <button class="quantity-btn" onclick="changeQuantity(${Number(item.id)}, -1)">-</button>
-            <span class="quantity-display">${item.quantity}</span>
-            <button class="quantity-btn" onclick="changeQuantity(${Number(item.id)}, 1)">+</button>
-          </div>
-        `}
-        <button class="remove-item" onclick="removeFromCart(${Number(item.id)})">&times;</button>
-      </div>
+              <div class="cart-item-controls">
+          ${item.bundleId ? `
+            <div class="quantity-controls disabled">
+              <span class="quantity-display">1</span>
+            </div>
+          ` : `
+            <div class="quantity-controls" style="display: flex; align-items: center; gap: 4px;">
+              <button class="quantity-btn" onclick="changeQuantity(${Number(item.id)}, -1)">-</button>
+              <span class="quantity-display">${item.quantity}</span>
+              <button class="quantity-btn" onclick="changeQuantity(${Number(item.id)}, 1)">+</button>
+            </div>
+          `}
+          <button class="remove-item" onclick="removeFromCart(${Number(item.id)})">&times;</button>
+        </div>
     </div>
   `).join('');
   totalElement.textContent = cartItems
@@ -431,52 +427,6 @@ document.addEventListener('DOMContentLoaded', () => {
   updateCartCounter();
   initializeCartDropdown();
   
-  // Mobile Suchleiste Toggle
-  const searchForm = document.querySelector('.search-form');
-  const searchBtn = document.querySelector('.search-form .btn');
-  
-  if (searchBtn && window.innerWidth <= 768) {
-    searchBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      e.stopPropagation(); // Verhindert Form-Submit
-      
-      if (searchForm.classList.contains('expanded')) {
-        // Wenn bereits geöffnet, dann suchen
-        const searchInput = searchForm.querySelector('.form-control');
-        if (searchInput && searchInput.value.trim()) {
-          // Führe Suche aus
-          updateFilters();
-        }
-      } else {
-        // Öffne Suchfeld
-        searchForm.classList.add('expanded');
-        const searchInput = searchForm.querySelector('.form-control');
-        if (searchInput) {
-          searchInput.focus();
-        }
-      }
-    });
-    
-    // Schließe Suchleiste beim Klick außerhalb
-    document.addEventListener('click', (e) => {
-      if (!searchForm.contains(e.target) && searchForm.classList.contains('expanded')) {
-        searchForm.classList.remove('expanded');
-      }
-    });
-    
-    // Enter-Taste im Suchfeld
-    const searchInput = searchForm.querySelector('.form-control');
-    if (searchInput) {
-      searchInput.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') {
-          e.preventDefault();
-          updateFilters();
-          searchForm.classList.remove('expanded');
-        }
-      });
-    }
-  }
-  
   // Sofortige Platzhalter für fehlende Bilder anwenden
   applyPlaceholdersForMissingImages();
 
@@ -500,68 +450,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }, 300);
 
   if (searchInput) searchInput.addEventListener('input', updateFilters);
-  if (categoryFilter) categoryFilter.addEventListener('change', (e) => {
-    // Leere die Suche wenn eine Kategorie gewählt wird
-    if (searchInput) {
-      searchInput.value = '';
-    }
-    updateFilters();
-  });
+  if (categoryFilter) categoryFilter.addEventListener('change', updateFilters);
   if (priceSort) priceSort.addEventListener('change', updateFilters);
-
-  // Kategorie-Klicks auf der Hauptseite
-  document.querySelectorAll('.category-tile').forEach(tile => {
-    tile.addEventListener('click', (e) => {
-      e.preventDefault();
-      const category = tile.getAttribute('data-category');
-      
-      // Setze die Kategorie im Dropdown
-      if (categoryFilter) {
-        categoryFilter.value = category;
-      }
-      
-      // Leere die Suche
-      if (searchInput) {
-        searchInput.value = '';
-      }
-      
-      // Aktualisiere die Filter
-      updateFilters();
-      
-      // Scrolle zu den Produkten
-      const productGrid = document.getElementById('productGrid');
-      if (productGrid) {
-        productGrid.scrollIntoView({ behavior: 'smooth' });
-      }
-    });
-  });
-
-  // "Alle Produkte entdecken" Button
-  const allProductsBtn = document.querySelector('a[href="#productGrid"]');
-  if (allProductsBtn) {
-    allProductsBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      
-      // Setze "Alle Kategorien" im Dropdown
-      if (categoryFilter) {
-        categoryFilter.value = 'Alle Kategorien';
-      }
-      
-      // Leere die Suche
-      if (searchInput) {
-        searchInput.value = '';
-      }
-      
-      // Aktualisiere die Filter
-      updateFilters();
-      
-      // Scrolle zu den Produkten
-      const productGrid = document.getElementById('productGrid');
-      if (productGrid) {
-        productGrid.scrollIntoView({ behavior: 'smooth' });
-      }
-    });
-  }
 
   // Initiales Laden und Rendern
   loadProducts().then(products => {
@@ -588,46 +478,6 @@ document.addEventListener('DOMContentLoaded', () => {
       clearCart();
     });
   }
-});
-
-// Warenkorb-Funktionalität
-document.addEventListener('DOMContentLoaded', function() {
-    const cartButton = document.getElementById('cartButton');
-    const cartDropdown = document.querySelector('.cart-dropdown');
-    
-    if (cartButton && cartDropdown) {
-        cartButton.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            
-            cartDropdown.classList.toggle('show');
-            document.body.classList.toggle('cart-open');
-            
-            // Schließen wenn außerhalb geklickt wird
-            if (cartDropdown.classList.contains('show')) {
-                document.addEventListener('click', closeCartOnClickOutside);
-            } else {
-                document.removeEventListener('click', closeCartOnClickOutside);
-            }
-        });
-    }
-    
-    function closeCartOnClickOutside(e) {
-        if (!cartDropdown.contains(e.target) && e.target !== cartButton) {
-            cartDropdown.classList.remove('show');
-            document.body.classList.remove('cart-open');
-            document.removeEventListener('click', closeCartOnClickOutside);
-        }
-    }
-    
-    // Schließen mit Escape-Taste
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && cartDropdown.classList.contains('show')) {
-            cartDropdown.classList.remove('show');
-            document.body.classList.remove('cart-open');
-            document.removeEventListener('click', closeCartOnClickOutside);
-        }
-    });
 });
 
 // Bilder optimieren
