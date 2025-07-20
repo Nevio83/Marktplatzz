@@ -325,16 +325,41 @@ if (searchInput && mobileSearchBtn) {
     // Entfernt die 'show'-Klasse, um das Dropdown zu schließen.
     cartDropdown.classList.remove('show');
     // Zeige die Knöpfe wieder an
-    if (hilfeBtnCart) hilfeBtnCart.style.display = 'flex';
-    if (scrollBtnCart) scrollBtnCart.style.display = 'flex';
+    if (hilfeBtnCart) {
+      hilfeBtnCart.style.display = 'flex';
+      hilfeBtnCart.style.visibility = 'visible';
+      hilfeBtnCart.style.opacity = '1';
+      hilfeBtnCart.style.zIndex = '1000';
+    }
+    if (scrollBtnCart) {
+      scrollBtnCart.style.display = 'flex';
+      scrollBtnCart.style.visibility = 'visible';
+      scrollBtnCart.style.opacity = '1';
+      scrollBtnCart.style.zIndex = '1000';
+    }
+    // Entferne Body-Scroll-Sperre
+    document.body.classList.remove('cart-open');
   });
   
   // Verstecke Knöpfe wenn Warenkorb geöffnet wird
   document.getElementById('cartButton').addEventListener('click', () => {
     setTimeout(() => {
       if (cartDropdown.classList.contains('show')) {
-        if (hilfeBtnCart) hilfeBtnCart.style.display = 'none';
-        if (scrollBtnCart) scrollBtnCart.style.display = 'none';
+        // Verstecke Knöpfe komplett
+        if (hilfeBtnCart) {
+          hilfeBtnCart.style.display = 'none';
+          hilfeBtnCart.style.visibility = 'hidden';
+          hilfeBtnCart.style.opacity = '0';
+          hilfeBtnCart.style.zIndex = '-1';
+        }
+        if (scrollBtnCart) {
+          scrollBtnCart.style.display = 'none';
+          scrollBtnCart.style.visibility = 'hidden';
+          scrollBtnCart.style.opacity = '0';
+          scrollBtnCart.style.zIndex = '-1';
+        }
+        // Verhindere Scrollen auf dem Body
+        document.body.classList.add('cart-open');
       }
     }, 100);
   });

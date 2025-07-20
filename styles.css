@@ -1177,22 +1177,35 @@ footer a:hover {
         height: 100vh !important;
         max-height: 100vh !important;
         border-radius: 0 !important;
-        z-index: 10000 !important;
+        z-index: 99999 !important;
         background: var(--card-bg);
         display: flex;
         flex-direction: column;
+        overflow: hidden;
     }
     
-    /* Verstecke Hilfe- und Nach-oben-Knöpfe wenn Warenkorb offen ist */
+    /* Verstecke alle Knöpfe wenn Warenkorb offen ist */
     .cart-dropdown.show ~ #hilfeButton,
-    .cart-dropdown.show ~ #scrollToTopBtn {
+    .cart-dropdown.show ~ #scrollToTopBtn,
+    .cart-dropdown.show + #hilfeButton,
+    .cart-dropdown.show + #scrollToTopBtn,
+    .cart-dropdown.show ~ * #hilfeButton,
+    .cart-dropdown.show ~ * #scrollToTopBtn,
+    #hilfeButton[style*="display: none"],
+    #scrollToTopBtn[style*="display: none"] {
         display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        z-index: -1 !important;
+        pointer-events: none !important;
     }
     
-    /* Verstecke auch direkt wenn Warenkorb offen ist */
-    .cart-dropdown.show + #hilfeButton,
-    .cart-dropdown.show + #scrollToTopBtn {
-        display: none !important;
+    /* Verhindere Scrollen auf dem Body wenn Warenkorb offen ist */
+    body.cart-open {
+        overflow: hidden !important;
+        position: fixed !important;
+        width: 100% !important;
+        height: 100% !important;
     }
     
     .cart-dropdown-header {
