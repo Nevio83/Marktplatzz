@@ -220,46 +220,7 @@ if (searchInput && mobileSearchBtn) {
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="app.js"></script>
-    <script>
-      // Verhindere horizontales Scrollen auf mobilen Geräten
-      function preventHorizontalScroll() {
-        if (window.innerWidth <= 768) {
-          document.documentElement.style.overflowX = 'hidden';
-          document.body.style.overflowX = 'hidden';
-          
-          // Verhindere Touch-Scroll nach links/rechts
-          document.addEventListener('touchmove', function(e) {
-            if (e.touches.length === 1) {
-              const touch = e.touches[0];
-              const startX = touch.clientX;
-              const startY = touch.clientY;
-              
-              document.addEventListener('touchmove', function(e) {
-                const touch = e.touches[0];
-                const deltaX = Math.abs(touch.clientX - startX);
-                const deltaY = Math.abs(touch.clientY - startY);
-                
-                // Wenn horizontale Bewegung größer als vertikale, verhindere Scroll
-                if (deltaX > deltaY) {
-                  e.preventDefault();
-                }
-              }, { passive: false });
-            }
-          });
-        }
-      }
-      
-      // Führe beim Laden und bei Größenänderung aus
-      document.addEventListener('DOMContentLoaded', preventHorizontalScroll);
-      window.addEventListener('resize', preventHorizontalScroll);
-      
-      // Zusätzliche Sicherheit: Verhindere horizontales Scrollen
-      window.addEventListener('scroll', function() {
-        if (window.scrollX !== 0) {
-          window.scrollTo(0, window.scrollY);
-        }
-      });
-    </script>
+
     <script>
       // Sanfter Cache-Breaker ohne automatisches Neuladen
       console.log('Cache-Breaker aktiviert (sanft)...');
