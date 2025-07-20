@@ -852,14 +852,18 @@ footer a:hover {
     
     /* Touch-optimierte Hinzufügen-Buttons für Mobile */
     .product-card .btn.add-to-cart {
-        padding: 6px 10px;
-        font-size: 0.8rem;
-        min-height: 36px;
-        min-width: 80px;
+        padding: 6px 8px;
+        font-size: 0.75rem;
+        min-height: 32px;
+        min-width: 60px;
     }
     
     .product-card .btn.add-to-cart i {
-        font-size: 0.9rem;
+        font-size: 0.8rem;
+    }
+    
+    .product-card .btn.add-to-cart .btn-text {
+        display: none;
     }
     
     .container {
@@ -945,14 +949,18 @@ footer a:hover {
     
     /* Kleinere Touch-optimierte Hinzufügen-Buttons für kleine Mobile */
     .product-card .btn.add-to-cart {
-        padding: 4px 8px;
+        padding: 4px 6px;
         font-size: 0.7rem;
-        min-height: 32px;
-        min-width: 70px;
+        min-height: 28px;
+        min-width: 50px;
     }
     
     .product-card .btn.add-to-cart i {
-        font-size: 0.8rem;
+        font-size: 0.75rem;
+    }
+    
+    .product-card .btn.add-to-cart .btn-text {
+        display: none;
     }
     
     .container {
@@ -1079,14 +1087,18 @@ footer a:hover {
     
     /* Kleine Touch-optimierte Hinzufügen-Buttons für sehr kleine Mobile */
     .product-card .btn.add-to-cart {
-        padding: 3px 6px;
+        padding: 3px 5px;
         font-size: 0.65rem;
-        min-height: 28px;
-        min-width: 60px;
+        min-height: 24px;
+        min-width: 40px;
     }
     
     .product-card .btn.add-to-cart i {
         font-size: 0.7rem;
+    }
+    
+    .product-card .btn.add-to-cart .btn-text {
+        display: none;
     }
     
     .my-5 {
@@ -1181,12 +1193,16 @@ footer a:hover {
     .product-card .btn.add-to-cart {
         padding: 2px 4px;
         font-size: 0.6rem;
-        min-height: 24px;
-        min-width: 50px;
+        min-height: 20px;
+        min-width: 35px;
     }
     
     .product-card .btn.add-to-cart i {
         font-size: 0.65rem;
+    }
+    
+    .product-card .btn.add-to-cart .btn-text {
+        display: none;
     }
     
     .my-5 {
