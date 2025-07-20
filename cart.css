@@ -1544,29 +1544,43 @@ html, body {
 }
 
 /* Größere Mengen- und Entfernen-Buttons im Warenkorb */
-.cart-item .quantity-btn, .cart-item .remove-item {
-  width: 44px !important;
-  height: 44px !important;
-  min-width: 44px !important;
-  min-height: 44px !important;
-  font-size: 1.5rem !important;
+.cart-item .quantity-btn, .cart-item .remove-btn {
+  width: 28px !important;
+  height: 28px !important;
+  min-width: 28px !important;
+  min-height: 28px !important;
+  font-size: 0.85rem !important;
   border-radius: 50% !important;
-  margin: 0 0.3rem !important;
+  margin: 0 0.2rem !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-}
-.cart-item .remove-item {
-  color: #ff4d4f !important;
+  line-height: 1 !important;
   background: #fff !important;
-  border: 1.5px solid #ffb3b3 !important;
-  font-size: 1.7rem !important;
-  margin-left: 0.5rem !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  border: 1.5px solid #ddd !important;
+  color: #222 !important;
   transition: background 0.2s, color 0.2s;
 }
-.cart-item .remove-item:hover {
-  background: #ffb3b3 !important;
+.cart-item .quantity-btn i, .cart-item .remove-btn i {
+  font-size: 0.85rem !important;
+  color: #212529 !important;
+  line-height: 1 !important;
+}
+.cart-item .remove-btn i {
+  color: #ff4d4f !important;
+}
+.cart-item .quantity-btn:hover, .cart-item .remove-btn:hover {
+  background: #f0f0f0 !important;
+  color: #007bff !important;
+}
+.cart-item .remove-btn:hover i {
   color: #fff !important;
+}
+.cart-item .remove-btn:hover {
+  background: #ff4d4f !important;
+  border-color: #ff4d4f !important;
 }
 
 /* Extra große + und - Buttons im Warenkorb (cart-dropdown) */
@@ -1609,4 +1623,124 @@ html, body {
 #cartDropdown .remove-item:hover {
   background: #ffb3b3 !important;
   color: #fff !important;
+}
+
+/* Extra große +, -, x Buttons im Warenkorb (Dropdown & cart.html) */
+.cart-item .quantity-btn, .cart-item .remove-btn,
+#cartDropdown .quantity-btn, #cartDropdown .remove-item {
+  width: 64px !important;
+  height: 64px !important;
+  min-width: 64px !important;
+  min-height: 64px !important;
+  font-size: 2.2rem !important;
+  border-radius: 50% !important;
+  margin: 0 0.7rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+}
+.cart-item .remove-btn, #cartDropdown .remove-item {
+  color: #ff4d4f !important;
+  background: #fff !important;
+  border: 2px solid #ffb3b3 !important;
+  font-size: 2.2rem !important;
+  margin-left: 1rem !important;
+  transition: background 0.2s, color 0.2s;
+}
+.cart-item .remove-btn:hover, #cartDropdown .remove-item:hover {
+  background: #ffb3b3 !important;
+  color: #fff !important;
+}
+
+#cartDropdown .quantity-btn, #cartDropdown .remove-item {
+  width: 80px !important;
+  height: 80px !important;
+  min-width: 80px !important;
+  min-height: 80px !important;
+  font-size: 2.8rem !important;
+  border-radius: 50% !important;
+  margin: 0 1.2rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+}
+#cartDropdown .remove-item {
+  color: #ff4d4f !important;
+  background: #fff !important;
+  border: 2.5px solid #ffb3b3 !important;
+  font-size: 2.8rem !important;
+  margin-left: 1.5rem !important;
+  transition: background 0.2s, color 0.2s;
+}
+#cartDropdown .remove-item:hover {
+  background: #ffb3b3 !important;
+  color: #fff !important;
+}
+
+.cart-item .quantity-controls .quantity-btn,
+.cart-item button.quantity-btn,
+.cart-item button.remove-btn {
+  width: 32px !important;
+  height: 32px !important;
+  min-width: 32px !important;
+  min-height: 32px !important;
+  max-width: 32px !important;
+  max-height: 32px !important;
+  padding: 0 !important;
+  font-size: 1rem !important;
+  border-radius: 50% !important;
+  margin: 0 0.25rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.cart-item .quantity-controls .quantity-btn i,
+.cart-item button.quantity-btn i,
+.cart-item button.remove-btn i {
+  font-size: 1rem !important;
+  width: auto !important;
+  height: auto !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.cart-item .quantity-controls {
+  gap: 0.25rem !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+@media (max-width: 600px) {
+  .cart-item .quantity-controls .quantity-btn,
+  .cart-item button.quantity-btn,
+  .cart-item button.remove-btn {
+    width: 26px !important;
+    height: 26px !important;
+    min-width: 26px !important;
+    min-height: 26px !important;
+    max-width: 26px !important;
+    max-height: 26px !important;
+    padding: 0 !important;
+    font-size: 0.9rem !important;
+    border-radius: 50% !important;
+    margin: 0 0.2rem !important;
+  }
+
+  .cart-item .quantity-controls .quantity-btn i,
+  .cart-item button.quantity-btn i,
+  .cart-item button.remove-btn i {
+    font-size: 0.9rem !important;
+  }
+
+  .cart-item .quantity-controls {
+    gap: 0.2rem !important;
+  }
 }

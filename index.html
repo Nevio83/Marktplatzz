@@ -22,7 +22,7 @@
         <form class="search-form mx-auto">
           <div class="input-group">
             <input type="search" id="searchInput" class="form-control rounded-pill" placeholder="Suche...">
-            <button class="btn btn-primary rounded-pill px-3" type="submit" aria-label="Suchen">
+            <button class="btn btn-primary rounded-pill px-3" type="button" aria-label="Suchen" id="mobileSearchBtn">
               <i class="bi bi-search"></i>
             </button>
           </div>
@@ -60,12 +60,67 @@
         </div>
     </nav>
 <style>
-/* Nur die Breite der Suchleiste anpassen, sonst Bootstrap-Standard lassen */
-.search-form .input-group {
-  width: 320px;
-  max-width: 100%;
+@media (max-width: 600px) {
+  .container-fluid.nav-flex {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-icons {
+    margin-left: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1.2rem;
+  }
+  .search-form {
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 0.5rem;
+    min-width: 0;
+  }
 }
 </style>
+<script>
+// Mobile Suchfeld-Interaktion
+function isMobile() {
+  return window.innerWidth <= 600;
+}
+const searchInput = document.getElementById('searchInput');
+const mobileSearchBtn = document.getElementById('mobileSearchBtn');
+if (searchInput && mobileSearchBtn) {
+  function showSearchField() {
+    if (isMobile()) {
+      searchInput.style.display = 'block';
+      searchInput.style.width = '80vw';
+      searchInput.focus();
+      mobileSearchBtn.style.display = 'none';
+    }
+  }
+  function hideSearchField() {
+    if (isMobile()) {
+      searchInput.style.display = 'none';
+      searchInput.value = '';
+      mobileSearchBtn.style.display = 'block';
+    }
+  }
+  mobileSearchBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    showSearchField();
+  });
+  searchInput.addEventListener('blur', function() {
+    setTimeout(hideSearchField, 150);
+  });
+  // Initialer Zustand
+  if (isMobile()) {
+    searchInput.style.display = 'none';
+    mobileSearchBtn.style.display = 'block';
+  }
+}
+</script>
 
     <!-- Main Content -->
     <main>
