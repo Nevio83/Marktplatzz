@@ -453,6 +453,24 @@ document.addEventListener('DOMContentLoaded', () => {
   if (categoryFilter) categoryFilter.addEventListener('change', updateFilters);
   if (priceSort) priceSort.addEventListener('change', updateFilters);
 
+  // Speichere die Sucheingabe bei Enter und verhindere Seitenreload
+  if (searchInput) {
+    searchInput.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        localStorage.setItem('lastSearch', searchInput.value);
+        updateFilters();
+        searchInput.blur(); // Fokus entfernen
+      }
+    });
+    // Optional: Beim Laden den letzten Suchbegriff wiederherstellen
+    const lastSearch = localStorage.getItem('lastSearch');
+    if (lastSearch) {
+      searchInput.value = lastSearch;
+      updateFilters();
+    }
+  }
+
   // Initiales Laden und Rendern
   loadProducts().then(products => {
     const filtered = filterProducts(

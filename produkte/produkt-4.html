@@ -34,7 +34,7 @@
                     <h1 class="display-4 fw-bold mb-3">Mode Produkt 1</h1>
                     <p class="lead mb-4">Beschreibungstext für Mode Produkt 1</p>
                     <div class="d-flex align-items-center gap-3 mb-4">
-                        <span class="price-tag">€19.00</span>
+                        <span class="price-tag">€20.00</span>
                         <span class="badge bg-success">Kostenloser Versand in Europa</span>
                     </div>
                     <button class="btn btn-light btn-lg me-3" id="cartBtn">
@@ -385,13 +385,7 @@
         cartBtn.id = 'cartBtn';
         cartBtn.className = 'btn btn-light btn-lg me-3';
         hero.appendChild(cartBtn);
-            }
-        }
-    if (cartBtn) {
-      cartBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        addToCart(product);
-      });
+      }
     }
     // Dynamischer Preis für Schnellbestellung
     const quantityInput = document.getElementById('quantity');

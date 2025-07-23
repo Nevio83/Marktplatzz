@@ -383,7 +383,6 @@
     // Warenkorb-Button
     let cartBtn = document.getElementById('cartBtn');
     if (!cartBtn) {
-      // Fallback: Erstelle Button, falls nicht vorhanden
       const hero = document.querySelector('.product-hero .col-lg-6');
       if (hero) {
         cartBtn = document.createElement('button');
@@ -392,12 +391,13 @@
         hero.appendChild(cartBtn);
       }
     }
-    if (cartBtn) {
-      cartBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        addToCart(product);
-      });
-    }
+    // Entferne diesen Block, da buyBtn bereits einen eigenen Listener hat:
+    // if (cartBtn) {
+    //   cartBtn.addEventListener('click', function(e) {
+    //     e.preventDefault();
+    //     addToCart(product);
+    //   });
+    // }
     // Dynamischer Preis für Schnellbestellung
     const quantityInput = document.getElementById('quantity');
     const buyBtn = document.querySelector('.card .btn-primary.btn-lg');

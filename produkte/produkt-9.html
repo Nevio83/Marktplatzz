@@ -9,7 +9,7 @@
     <link href="fitness.css" rel="stylesheet">
     <style>
         .product-hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
             color: white;
             padding: 4rem 0;
         }
@@ -22,7 +22,7 @@
             transform: scale(1.02);
         }
         .price-tag {
-            background: linear-gradient(45deg, #667eea, #764ba2);
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
             color: white;
             padding: 0.5rem 1.5rem;
             border-radius: 25px;
@@ -60,11 +60,11 @@
                         <span class="price-tag">€44.00</span>
                         <span class="badge bg-success">Kostenloser Versand in Europa</span>
                     </div>
-                    <button class="btn btn-light btn-lg me-3" id="cartBtn" onclick="addToCart(12)">
+                    <button class="btn btn-light btn-lg me-3" id="cartBtn">
                         <i class="bi bi-cart-plus"></i> In den Warenkorb
                     </button>
-                    <button class="btn btn-outline-light btn-lg" id="wishlistBtn" onclick="toggleWishlist(product)">
-                        <i class="bi bi-heart"></i> Merken
+                    <button class="btn btn-outline-light btn-lg" id="wishlistBtn">
+                        <i class="bi bi-heart"></i> Zur Wunschliste
                     </button>
                 </div>
                 <div class="col-lg-6 text-center">
@@ -118,10 +118,10 @@
                                 <input type="number" class="form-control" id="quantity" value="1" min="1" max="10">
                             </div>
                             <div class="d-grid gap-2">
-                                <button class="btn btn-primary btn-lg" id="cartBtn" onclick="addToCart(12)">
+                                <button class="btn btn-primary btn-lg" id="cartBtn">
                                     <i class="bi bi-cart-plus"></i> Jetzt kaufen - €44.00
                                 </button>
-                                <button class="btn btn-outline-secondary" id="wishlistBtn" onclick="toggleWishlist(product)">
+                                <button class="btn btn-outline-secondary" id="wishlistBtn">
                                     <i class="bi bi-heart"></i> Zur Wunschliste hinzufügen
                                 </button>
                             </div>
@@ -415,13 +415,7 @@
         cartBtn.id = 'cartBtn';
         cartBtn.className = 'btn btn-light btn-lg me-3';
         hero.appendChild(cartBtn);
-            }
-        }
-    if (cartBtn) {
-      cartBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        addToCart(product);
-      });
+      }
     }
     // Dynamischer Preis für Schnellbestellung
     const quantityInput = document.getElementById('quantity');

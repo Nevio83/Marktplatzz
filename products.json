@@ -198,7 +198,7 @@
   { 
     "id": 8, 
     "name": "Fitness Produkt 2", 
-    "price": 32.00, 
+    "price": 42.00, 
     "category": "Fitness", 
     "image": "produkt bilder/ware.png", 
     "description": "Für ein aktives und gesundes Leben.",
@@ -226,7 +226,7 @@
   { 
     "id": 9, 
     "name": "Fitness Produkt 3", 
-    "price": 34.00, 
+    "price": 44.00, 
     "category": "Fitness", 
     "image": "produkt bilder/ware.png", 
     "description": "Für ein aktives und gesundes Leben.",
